@@ -4,14 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+var setting = require('./setting');
 //import sessions Persistence modules
 var flash = require('connect-flash');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-var setting = require('./setting');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var reg = require('./routes/reg');
+var login = require('./routes/login');
+var logout = require('./routes/logout');
 
 var app = express();
 
@@ -19,18 +24,20 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//show use flash modules
-app.use(flash());
+
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());//app.use(express.cookieParser()); 3.x
+app.use(express.static(path.join(__dirname, 'public')));
+
+//show use flash modules
+app.use(flash());
 //引入session连接mongodb
 app.use(session({
     secret: setting.cookieSecret,
-    proxy: true,
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({
@@ -39,11 +46,28 @@ app.use(session({
         console.log('connect mongodb success...');
     })
 }));
+//注意，这里是用来把flash的中间键的标记如success等加载进去
+app.use(function(req, res, next){
+    console.log("app.usr local");
+    res.locals.user = req.session.user;
+    res.locals.post = req.session.post;
+    var error = req.flash('error');
+    res.locals.error = error.length ? error : null;
 
-app.use(    express.static(path.join(__dirname, 'public')));
+    var success = req.flash('success');
+    res.locals.success = success.length ? success : null;
+next();
+});
+
 
 app.use('/', routes);
-app.use('/users', users);
+app.get('/u/:users',users);
+app.get('/reg',reg);
+app.post('/reg',reg);
+app.get('/login',login);
+app.post('/login',login);
+app.get('/logout',logout);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

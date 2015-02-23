@@ -12,5 +12,5 @@ var Connections = require("mongodb").Connection;
 //获取服务对象
 var Server = require("mongodb").Server;
 //创建连接并且将接口exports出来
-var exports = new Db(setting.db,new Server(setting.host,Connections.DEFAULT_PORT,{}),{safe:true});
+module.exports = new Db(setting.db,new Server(setting.host,Connections.DEFAULT_PORT,{}),{safe:true});
 
