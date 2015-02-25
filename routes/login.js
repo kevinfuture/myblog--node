@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 var User = require('../models/User.js');
 var crypto = require('crypto');
 var islogin = require('../routes/islogin');
@@ -24,7 +25,7 @@ router.post('/login', function(req, res) {
     var md5 = crypto.createHash('md5');
     var password = md5.update(req.body.password).digest('base64');
 
-    User.get(req.body.username, function(err, user) {
+    mongoose.model('User').find(req.body.username, function(err, user) {
         if (!user) {
             req.flash('error', '用户不存在');
             return res.redirect('/login');

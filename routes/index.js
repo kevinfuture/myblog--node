@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 var User = require('../models/User.js');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    User.get(null, function(err, user) {
-        if (err) {
+    mongoose.model('User').find(function(err, user){
+        if(err){
             user = [];
         }
         res.render('index', {

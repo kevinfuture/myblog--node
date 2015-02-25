@@ -4,7 +4,8 @@
 var express = require('express');
 var router = express.Router();
 var crypto =require('crypto');
-var User = require('../models/User.js');
+var mongoose = require('mongoose');
+var UserSchema = require('../models/User.js');
 var islogin = require('../routes/islogin');
 
 var isLogin = new islogin();
@@ -22,18 +23,21 @@ router.post('/reg', function(req, res, next) {
     }
     var md5 = crypto.createHash('md5');
     var password = md5.update(req.body.password).digest('base64');
-    var newUser = new User({
+    var newUser = new UserSchema.User({
         name: req.body.username,
         password: password
     });
     //检查用户名是否已经存在
- User.get(newUser.name, function(err, user) {
+    mongoose.model('User').find({name:newUser.name}, function(err, user) {
+        console.log('打印。。。。。'+user);
         if (user){
+            console.log('>>>>。。。'+user);
             err = '该用户已经存在';
             req.flash('error', err);
             return res.redirect('/reg');
         }
         if (err) {
+            console.log(user+'u3333ser'+err);
             req.flash('error', err);
             return res.redirect('/reg');
         }
