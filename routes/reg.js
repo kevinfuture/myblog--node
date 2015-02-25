@@ -28,10 +28,10 @@ router.post('/reg', function(req, res, next) {
         password: password
     });
     //检查用户名是否已经存在
-    mongoose.model('User').find({name:newUser.name}, function(err, user) {
+    mongoose.model('User').count({name:newUser.name}, function(err, user) {
         console.log('打印。。。。。'+user);
-        if (user){
-            console.log('>>>>。。。'+user);
+        if (user!=0){
+            console.log('>>>>。。。'+user.count);
             err = '该用户已经存在';
             req.flash('error', err);
             return res.redirect('/reg');
