@@ -24,19 +24,32 @@ router.post('/login', function(req, res) {
     //生成口令的散列值
     var md5 = crypto.createHash('md5');
     var password = md5.update(req.body.password).digest('base64');
-
-    mongoose.model('User').find(req.body.username, function(err, user) {
+    mongoose.model('User').count({name:req.body.username}, function(err, user) {
         if (!user) {
             req.flash('error', '用户不存在');
             return res.redirect('/login');
         }
-        if (user.password != password) {
-            req.flash('error', '用户口令错误');
-            return res.redirect('/login');
-        }
-        req.session.user = user;
-        req.flash('success', '登入成功');
-        res.redirect('/');
+        //以下有错误，今天修改
+
+        mongoose.model('User').findOne({name:req.body.username},function(err,user){
+            if(user) {
+                var user_get = new User.User(user);
+                console.log('qqqqq'+user_get);
+            }
+            if (user_get.password != password) {
+                req.flash('error', '用户口令错误');
+                return res.redirect('/login');
+            }
+            req.session.user = user_get;
+            req.flash('success', '登入成功');
+            res.redirect('/');
+        });
+
+        console.log('***######**：'+user);
+        console.log('*************：'+user.name);
+
+        console.log('user：'+user);
+
     });
 });
 

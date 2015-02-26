@@ -10,8 +10,8 @@ var UserSchema = new Schema({
     name:{type:String,index: true},
     password:String
 });
-UserSchema.method.find = function (username, callback) {
-    this.find({ username: username }, callback);
+UserSchema.methods.find = function (username, callback) {
+   return this.find({ username: username }, callback);
 }
 // Middleware...
 UserSchema.static('authed', function (req, res, next) {

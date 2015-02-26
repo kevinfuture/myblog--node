@@ -29,15 +29,12 @@ router.post('/reg', function(req, res, next) {
     });
     //检查用户名是否已经存在
     mongoose.model('User').count({name:newUser.name}, function(err, user) {
-        console.log('打印。。。。。'+user);
         if (user!=0){
-            console.log('>>>>。。。'+user.count);
             err = '该用户已经存在';
             req.flash('error', err);
             return res.redirect('/reg');
         }
         if (err) {
-            console.log(user+'u3333ser'+err);
             req.flash('error', err);
             return res.redirect('/reg');
         }
@@ -48,7 +45,6 @@ router.post('/reg', function(req, res, next) {
                 return res.redirect('/reg');
             }
             req.session.user = newUser;
-            console.log(newUser.name+"dfgdfgdgdf");
             req.flash('success', '注册成功');
             res.redirect('/');
         });
