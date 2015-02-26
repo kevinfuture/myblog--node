@@ -29,12 +29,9 @@ router.post('/login', function(req, res) {
             req.flash('error', '用户不存在');
             return res.redirect('/login');
         }
-        //以下有错误，今天修改
-
         mongoose.model('User').findOne({name:req.body.username},function(err,user){
             if(user) {
                 var user_get = new User.User(user);
-                console.log('qqqqq'+user_get);
             }
             if (user_get.password != password) {
                 req.flash('error', '用户口令错误');
@@ -44,10 +41,6 @@ router.post('/login', function(req, res) {
             req.flash('success', '登入成功');
             res.redirect('/');
         });
-
-        console.log('***######**：'+user);
-        console.log('*************：'+user.name);
-
         console.log('user：'+user);
 
     });

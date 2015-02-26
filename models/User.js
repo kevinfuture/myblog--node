@@ -7,7 +7,7 @@ var Schema = db.mongoose.Schema;
 var ObjectId =Schema.Types.ObjectId;//注意写法，大小写要正确，最好使用webstorm的自动补全，这样可以定位到相应的模块代码
 var UserSchema = new Schema({
    // _id:ObjectId,
-    name:{type:String,index: true},
+    name:{type:String,index: true},//此处我设置了name为唯一性的索引，它自动指向数据文档的_id，所以我可以不用设置_id
     password:String
 });
 UserSchema.methods.find = function (username, callback) {
@@ -25,9 +25,7 @@ UserSchema.static('exists', function (username, cb) {
         return cb(false);
     });
 })
-
-// Used for any passport 3rd party auth needs.
-// How-to: User.findOrCreate({google_id: identification}, function (er, user) {})
+// How-to: User.findOrCreate({google_id: identification}, function (er, user) {})Used for any passport 3rd party auth needs
 UserSchema.static('findOrCreate', function (query, cb) {
     UserSchema.findOne(query, function (err, doc) {
         if (err) return cb(err)
@@ -47,61 +45,3 @@ UserSchema.static('findOrCreate', function (query, cb) {
 
 //})
 exports.User = db.mongoose.model('User',UserSchema) ;
-
-
-/*   mongodb模块的使用
- var mongodb = require('./db');
- //未获取BaseObject中的字段
- function User(user){
- this.name = user.name;
- // this.email = user.email;
- this.password = user.password;
- };
- User.get = function get(username,callback){
- mongodb.open(function(err,db){
- if(err){
- return callback(err);
- }
- db.collection('user',function(err,collection){
- if(err){
- mongodb.close();
- return callback(err);
- }
- collection.findOne({name:username},function(err,doc){
- mongodb.close();
- if(doc){
- var user = new User(doc);
- callback(err,user);
- }else{
- callback(err,null);
- }
- });
- })
- });
- }
-
- User.prototype.save = function save(callback){
- var user = {
- name : this.name,
- //email : this.email,
- password : this.password
- };
- mongodb.open(function(err,db){
- if(err){
- return callback(err);
- }
- db.collection('user',function(err,collection){
- if(err){
- mongodb.close()
- return callback(err);
- }
- collection.ensureIndex('name',{unique:true},function(err,user){});//mongodb支持索引，所以在这里给name设置所以可以提高查询速度
- collection.insert(user,{safe:true},function(err){
- mongodb.close();
- callback();
- });
- })
- });
- }
- module.exports = User;
- */

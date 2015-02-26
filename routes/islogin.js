@@ -21,9 +21,6 @@ function islogin() {
         }
         next();//进入下一层，验证信息
     }
-    this.log=function(){
-        console.log('传值测试');
-    }
 }
 
 
