@@ -6122,7 +6122,7 @@ a.badge:focus {
   margin-bottom: 30px;
   font-size: 18px;
   font-weight: 200;
-  line-height: 30px;
+  line-height: 200px;
   color: inherit;
   background-color: #eeeeee;
   -webkit-border-radius: 6px;
