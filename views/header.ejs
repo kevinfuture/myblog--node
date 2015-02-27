@@ -24,12 +24,12 @@
             <a class="brand" href="/">Kevin's blog</a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="/">首页</a></li>
                     <% if (!user) { %>
                     <li><a href="/login">登入</a></li>
                     <li><a href="/reg">注册</a></li>
                     <% } else { %>
-                    <li><a href="/user/:<%=user.name%>>">您好:<%= user.name%></a></li>
+                    <li><a href="/<%=user.name%>">个人中心:<%= user.name%></a></li>
+                    <li><a href="/<%=user.name%>" target="_blank">我的博客</a></li>
                     <li><a href="/logout">登出</a></li>
                     <% } %>
                 </ul>
