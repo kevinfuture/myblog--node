@@ -17,6 +17,8 @@ var users = require('./routes/users');
 var reg = require('./routes/reg');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
+//以下是正式进入博客园的文件
+var blogindex= require('./routes/BlogController/index');
 
 var app = express();
 
@@ -56,17 +58,20 @@ app.use(function(req, res, next){
 
     var success = req.flash('success');
     res.locals.success = success.length ? success : null;
-next();
+    next();
 });
 
 
 app.use('/', routes);
-app.get('/u/:users',users);
+app.get('/users',users);
 app.get('/reg',reg);
 app.post('/reg',reg);
 app.get('/login',login);
 app.post('/login',login);
 app.get('/logout',logout);
+//以下是博客园的路由指向
+app.get('/Blog/index',blogindex);
+
 
 
 // catch 404 and forward to error handler

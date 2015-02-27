@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
             user = [];
         }
         res.render('index', {
-            title: 'index',
+            title: '首页',
             user : req.session.user,
             success : req.flash('success').toString(),
             error : req.flash('error').toString()
