@@ -1,11 +1,12 @@
-/*初始化*/
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
-img {border: 0;max-width: 100% !important; vertical-align: middle;}
+/*初始�/
 
-a {text-decoration: none;color:#333;}
-ul,ol,li{list-style:none;}
-body { color: #2b4965;font-size: 14px;font-family: microsoft yahei,tahoma,arial,\5b8b\4f53,sans-serif;line-height: 1.428;}
-.clearfix:after { display: table; line-height: 0; content: "";}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{ margin:0;padding:0;border:0;}
+body{background:#fff;color:#333;font-size:14px; font-family: Arial, sans-serif;}
+ul,ol,li{list-style-type:none;}
+select,input,img,select{ vertical-align:middle;}
+a{text-decoration:none;color:#333;}
+.l{float:left}
+.r{float:right;}
 
 .clearfix:after {clear: both;}
 
@@ -14,12 +15,31 @@ body { color: #2b4965;font-size: 14px;font-family: microsoft yahei,tahoma,arial,
 .index .login a{padding-left:20px;}
 
 .index .carousel{background:rgba(0,0,0,.4);}
+.index .carousel img{height:500px;}
+
 .index  .carousel-control {  height: 80px; font-size: 120px; text-shadow: 0 1px 1px rgba(0,0,0,.4); background-color: transparent; border: 0;z-index: 10;}
 .index  .carousel img{height:500px;}
 /*enter-index页面*/
-.enter-index{height:800px;  background:url(../images/bnner_01.jpg); background-size:cover;}
-.enter-index .login{position:absolute;right:40px;top:10px;z-index:1031;}
-.enter-index .login a{padding-left:20px;}
-.enter-index .content{width:1000px;margin:0 auto;padding-top:60px;}
-.enter-index nav ul{margin-top:30px;padding-left:20px;}
-.enter-index nav li{float:left;padding:10px 30px;font-size:16px;font-family:'microsoft yahei';}
+.enter-index-header{  background:url(../images/top.jpg); }
+.enter-index-header .login{position:absolute;right:40px;top:10px;z-index:1031;}
+.enter-index-header .login a{padding-left:20px;}
+.enter-index-header .content{width:1000px;margin:0 auto;padding-top:100px;}
+.enter-index-header nav ul{margin-top:30px;padding-left:20px;}
+.enter-index-header nav li{float:left;padding:10px 30px;font-size:16px;font-family:'microsoft yahei';}
+.enter-index-header nav a {color:#555;}
+#enter-index{padding-top:20px; background:rgb(199,203,189) url(../images/top.jpg) no-repeat;background-position:0 -203px; }
+.wrapper{width:1000px;margin:0 auto;}
+#enter-index .main-banner{width:300px;height:200px;}
+#enter-index .main-content{width:700px;}
+#enter-index .main-content h2 {margin-top:12px; font-size: 18px;font-weight: normal; line-height: normal;}
+#enter-index .main-content h2 a{color: #6a6352;}
+#enter-index .main-content h2 a:hover{text-decoration:underline;}
+#enter-index .main-content p {margin-top:12px;color: #494949;line-height: 1.528; font-family: Arial,Helvetica,sans-serif; font-size: 14px;}
+#enter-index .main-content .con-msg {margin-top:2px;color: #666; font-family: Arial,Helvetica,sans-serif; font-size: 12px; line-height:1.4;}
+#enter-index .main-content .con-msg a{margin:0 4px;color: #666;}
+#enter-index .main-content .con-msg a:hover{text-decoration: underline;}
+#enter-index .page{padding-top:20px;font-size:12px;}
+#enter-index .page a{color:#666;}
+#enter-index .page a:hover{text-decoration: underline;}
+#enter-index .copy-right{padding:40px 0 30px 0;text-align: center;}
+
