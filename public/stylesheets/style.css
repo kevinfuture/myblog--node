@@ -1,21 +1,23 @@
 /*初始化*/
-body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,input,select{margin:0;padding:0;}
-img{border:0;}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+img {border: 0;max-width: 100% !important; vertical-align: middle;}
+
 a {text-decoration: none;color:#333;}
 ul,ol,li{list-style:none;}
-body {margin:0;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
-h1{margin:0;}
-.clearfix:after{content:"";display:block;clear:both;}
-.clearfix{zoom:1;}
+body { color: #2b4965;font-size: 14px;font-family: microsoft yahei,tahoma,arial,\5b8b\4f53,sans-serif;line-height: 1.428;}
+.clearfix:after { display: table; line-height: 0; content: "";}
+
+.clearfix:after {clear: both;}
+
 /*index页面*/
 .index .login{position:absolute;right:140px;top:10px;z-index:1031;}
 .index .login a{padding-left:20px;}
 
-.index .carousel{height:500px;background:rgba(0,0,0,.4);}
+.index .carousel{background:rgba(0,0,0,.4);}
 .index  .carousel-control {  height: 80px; font-size: 120px; text-shadow: 0 1px 1px rgba(0,0,0,.4); background-color: transparent; border: 0;z-index: 10;}
-
+.index  .carousel img{height:500px;}
 /*enter-index页面*/
-.enter-index{height:800px;  background:url(../images/enter-index-bg.jpg); background-size:cover;}
+.enter-index{height:800px;  background:url(../images/bnner_01.jpg); background-size:cover;}
 .enter-index .login{position:absolute;right:40px;top:10px;z-index:1031;}
 .enter-index .login a{padding-left:20px;}
 .enter-index .content{width:1000px;margin:0 auto;padding-top:60px;}
