@@ -9,6 +9,9 @@ var ObjectId =Schema.Types.ObjectId;
 var UserSchema = new Schema({
     name:{type:String,index: true},//此处我设置了name为唯一性的索引，它自动指向数据文档的_id，所以我可以不用设置_id
     password:String,
+    tel:String,
+    email:String,
+    age:String,
     baseObj:{type:Array,default:baseObject.BaseObject.call(this)}
 });
 UserSchema.methods.find = function (username, callback) {
