@@ -23,7 +23,6 @@ router.get('/users', function(req, res) {
         });
     });
 });
-//<meta http-equiv="refresh"content="1;url=http://www.baidu.com">//可以设置为自动跳转-->
 router.post('/users', function(req, res) {
     mongoose.model('User').findOneAndUpdate({name:req.session.user.name},{name:req.body.username,age:req.body.age,tel:req.body.tel,email:req.body.email}, function(err, user) {
         if (err) {

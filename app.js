@@ -17,6 +17,12 @@ var users = require('./routes/users');
 var reg = require('./routes/reg');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
+//修改密码---确认旧密码
+var confirmsecret = require('./routes/confirmsecret');
+//修改密码---输入域新密码
+var modifysecret = require('./routes/modifysecret');
+//跳转页面
+var skipmiddle = require('./routes/skipmiddle');
 //以下是正式进入博客园的文件
 var blogindex= require('./routes/BlogController/index');
 
@@ -70,6 +76,14 @@ app.post('/reg',reg);
 app.get('/login',login);
 app.post('/login',login);
 app.get('/logout',logout);
+//确认旧密码路由指向
+app.get('/confirmsecret',confirmsecret);
+app.post('/confirmsecret',confirmsecret);
+//输入新密码路由指向
+app.get('/modifysecret',modifysecret);
+app.post('/modifysecret',modifysecret);
+//跳转路由指向
+app.get('/skipmiddle',skipmiddle);
 //以下是博客园的路由指向
 app.get('/Blog/index',blogindex);
 
