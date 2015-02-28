@@ -1,8 +1,23 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+/*初始化*/
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,input,select{margin:0;padding:0;}
+img{border:0;}
+a {text-decoration: none;color:#333;}
+ul,ol,li{list-style:none;}
+body {margin:0;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
+h1{margin:0;}
+.clearfix:after{content:"";display:block;clear:both;}
+.clearfix{zoom:1;}
+/*index页面*/
+.index .login{position:absolute;right:140px;top:10px;z-index:1031;}
+.index .login a{padding-left:20px;}
 
-a {
-  color: #00B7FF;
-}
+.index .carousel{height:500px;background:rgba(0,0,0,.4);}
+.index  .carousel-control {  height: 80px; font-size: 120px; text-shadow: 0 1px 1px rgba(0,0,0,.4); background-color: transparent; border: 0;z-index: 10;}
+
+/*enter-index页面*/
+.enter-index{height:800px;  background:url(../images/enter-index-bg.jpg); background-size:cover;}
+.enter-index .login{position:absolute;right:40px;top:10px;z-index:1031;}
+.enter-index .login a{padding-left:20px;}
+.enter-index .content{width:1000px;margin:0 auto;padding-top:60px;}
+.enter-index nav ul{margin-top:30px;padding-left:20px;}
+.enter-index nav li{float:left;padding:10px 30px;font-size:16px;font-family:'microsoft yahei';}
