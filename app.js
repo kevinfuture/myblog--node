@@ -83,7 +83,7 @@ app.post('/confirmsecret',confirmsecret);
 app.get('/modifysecret',modifysecret);
 app.post('/modifysecret',modifysecret);
 //跳转路由指向
-app.get('/skipmiddle',skipmiddle);
+app.get('/skipmiddle',skipmiddle); 
 //以下是博客园的路由指向
 app.get('/Blog/index',blogindex);
 
