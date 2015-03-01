@@ -25,6 +25,16 @@ var modifysecret = require('./routes/modifysecret');
 var skipmiddle = require('./routes/skipmiddle');
 //以下是正式进入博客园的文件
 var blogindex= require('./routes/BlogController/index');
+//随笔的控制层
+var newessay= require('./routes/BlogController/Essay/newessay');
+
+//相册的控制层
+var photo= require('./routes/BlogController/Album/photo');
+
+
+//文件上传的控制层
+var uploadfile= require('./routes/BlogController/File/uploadfile');
+
 
 var app = express();
 
@@ -86,6 +96,14 @@ app.post('/modifysecret',modifysecret);
 app.get('/skipmiddle',skipmiddle); 
 //以下是博客园的路由指向
 app.get('/:users',blogindex);
+//随笔的路由指向
+app.get('/Essay/newessay',newessay);
+
+//相册的路由指向
+app.get('/Album/photo',photo);
+
+//文件的路由指向
+app.get('/File/uploadfile',uploadfile);
 
 
 
