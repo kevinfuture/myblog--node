@@ -1,10 +1,11 @@
 @charset "utf-8";
 /*初始化*/
 
-body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{ margin:0;padding:0;}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,legend{ margin:0;padding:0;}
 body{background:#fff;color:#333;font-size:14px; font-family: Arial, sans-serif;}
 ul,ol,li{list-style-type:none;}
-img{border:0;}
+img,fieldset{border:0 ;}
+legend{display:none;}
 select,input,img,select{ vertical-align:middle;}
 a{text-decoration:none;color:#333;}
 
@@ -46,3 +47,6 @@ a{text-decoration:none;color:#333;}
 #enter-index .page a:hover{text-decoration: underline;}
 #enter-index .copy-right{padding:40px 0 30px 0;text-align: center;}
 
+/*登陆页*/
+/*.alert-error{margin-top:60px;}*/
+#testing{padding-top:58px;}
