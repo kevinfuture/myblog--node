@@ -30,6 +30,7 @@ var blogindex= require('./routes/BlogController/index');
 
 //随笔的控制层
 var newessay= require('./routes/BlogController/Essay/newessay');
+var essaylist= require('./routes/BlogController/Essay/essaylist');
 
 //相册的控制层
 var photo= require('./routes/BlogController/Album/photo');
@@ -102,6 +103,7 @@ app.get('/:users',blogindex);
 //随笔的路由指向
 app.get('/Essay/newessay',newessay);
 app.post('/Essay/newessay',newessay);
+app.get('/Essay/essaylist',essaylist);
 
 //相册的路由指向
 app.get('/Album/photo',photo);

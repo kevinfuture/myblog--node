@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+<%essaylist.forEach(function(value,index,array){%>
+    <div class="item">
+        <h2><a href="javascript;;"><%=array[index].caption%></a></h2>
+        <p>摘要:<%=array[index].content%> ...阅读全文</p>
+        <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%><%=array[index].username%> 阅读(<span>3写死了</span>) 评论(<span>0(写死了)</span>)<a href="javascript:;">编辑(写死了)</a> </p>
+    </div>
+<%});%>
+</body>
+</html>
