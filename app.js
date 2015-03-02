@@ -27,6 +27,7 @@ var modifysecret = require('./routes/modifysecret');
 var skipmiddle = require('./routes/skipmiddle');
 //以下是正式进入博客园的文件
 var blogindex= require('./routes/BlogController/index');
+
 //随笔的控制层
 var newessay= require('./routes/BlogController/Essay/newessay');
 
@@ -100,6 +101,7 @@ app.get('/skipmiddle',skipmiddle);
 app.get('/:users',blogindex);
 //随笔的路由指向
 app.get('/Essay/newessay',newessay);
+app.post('/Essay/newessay',newessay);
 
 //相册的路由指向
 app.get('/Album/photo',photo);

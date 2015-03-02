@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-//var User = require('../models/User.js');
+var User = require('../../models/User.js');
 
 /* GET home page. */
 router.get('/:users', function(req, res, next) {
