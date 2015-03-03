@@ -9,7 +9,7 @@ var Schema = db.mongoose.Schema;
 var ObjectId =Schema.Types.ObjectId;
 var EssayPostSchema = new Schema({
     username:String,
-    caption:{type:String,index: true},//逻辑判断是否是一个人的标题，同一个人不允许出现相同内容的标题
+    caption:{type:String,default:'请输入标题',index: true},//逻辑判断是否是一个人的标题，同一个人不允许出现相同内容的标题
     content:String,
     baseObj:{type:Array,default:baseObject.BaseObject.call(this)}
 });

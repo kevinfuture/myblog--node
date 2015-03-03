@@ -5,19 +5,16 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
 </head>
-<script src="moment.js"></script>
-<script>
-    moment().format();
-</script>
 <body>
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
 <% if(essaylist){%>
 <%essaylist.forEach(function(value,index,array){%>
+<input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
     <div class="item">
         <h2><a href="javascript;;"><%=array[index].caption%></a></h2>
         <p>摘要:<%=array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...阅读全文</p>
-        <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span>3写死了</span>) 评论(<span>0(写死了)</span>)<a href="/Essay/newessay">编辑</a> </p>
+        <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span>3写死了</span>) 评论(<span>0(写死了)</span>)<a href="/Essay/newessay/<%=array[index].caption%>">编辑</a> </p>
     </div>
 <%});%>
 <% }%>
