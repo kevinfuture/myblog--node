@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 //引入模块
 var ueditor = require("ueditor");
 var moment = require('moment');
+//引入eventproxy模块用来解决异步嵌套回调问题
+var EventProxy = require('eventproxy');
+
 
 var setting = require('./setting');
 //import sessions Persistence modules
