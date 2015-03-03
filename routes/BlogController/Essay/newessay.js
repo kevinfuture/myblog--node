@@ -30,35 +30,6 @@ router.post('/Essay/newessay', function(req, res, next) {
         }
         req.flash('success', '创建新随笔成功！！！');
          res.redirect('/');
-        //mongoose.model('EssayPost').save({username:req.session.user.name,caption:req.body.caption,content:req.body.content},function(err,essaypost){
-        //    console.log('user对象：'+req.session.user);
-        //    console.log('username：'+req.session.user.name);
-        //    console.log('标题：'+req.body.caption);
-        //    console.log('内容：'+req.body.content);
-        //    if (err) {
-        //        req.flash('error', err);
-        //        return res.redirect('/Essay/newessay');
-        //    }
-        //    req.flash('success', '创建新随笔成功！！！');
-        //    res.redirect('/');
-        //});
     });
 });
 module.exports = router;
-
-//var newEssayPost = new EssayPost.EssayPost({
-//    username: req.session.user.name,
-//    caption: req.body.caption,
-//    content:req.body.content
-//});
-//var name = req.url.substring(1,15);
-//newEssayPost.save(function(err) {
-//    if (err) {
-//        req.flash('error', err);
-//        return res.redirect('/Blog/Essay/newessay');
-//    }
-//    req.flash('success', '创建新随笔成功！！！');
-//    res.render('Blog/index',{
-//        title:name
-//    });
-//});

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //引入模块
 var ueditor = require("ueditor");
+var moment = require('moment');
 
 var setting = require('./setting');
 //import sessions Persistence modules
