@@ -29,7 +29,7 @@ router.post('/Essay/newessay', function(req, res, next) {
             return res.redirect('/Essay/newessay');
         }
         req.flash('success', '创建新随笔成功！！！');
-         res.redirect('/');
+         res.redirect('/'); 
     });
 });
 module.exports = router;
