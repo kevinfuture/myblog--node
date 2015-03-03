@@ -1,8 +1,138 @@
 <% include header.ejs %>
 <div id="enter-index">
     <div class="wrapper">
+        <div class="blog-status r"> 随笔- 15  文章- 0  评论- 3 </div>
         <div class="clearfix">
-            <div class="l main-banner"></div>
+            <div class="l main-banner">
+                <div class="banner-item">
+                    <h3>公告</h3>
+                    <div class="banner-item-notice">
+                        <p> 昵称：<a href="javascript:;">kevinfuture</a></p>
+                        <p> 园龄：<a href="javascript:;">1年</a></p>
+                        <p> 关注：<a href="javascript:;">0</a></p>
+                        <p> <a href="javascript:;">+加关注</a></p>
+                    </div>
+                    <div class="mycalender"> </div>
+                    <script>
+                        $(function (){
+                            // 创建
+                            $('<div class="calender"> \
+                            <a href="javascript:;" class="prev">&lt;</a> \
+                            <a href="javascript:;" class="next">&gt;</a> \
+                            <span class="title">xxxx</span> \
+                            <ol> \
+                                <li>一</li> \
+                                <li>二</li> \
+                                <li>三</li> \
+                                <li>四</li> \
+                                <li>五</li> \
+                                <li>六</li> \
+                                <li>日</li> \
+                            </ol> \
+                            <ul> \
+                            </ul> \
+	                        </div>').appendTo($('.mycalender'));
+
+                            // 获取元素
+                            var oDiv=$('.calender');
+                            var oSpan=oDiv.find('.title');
+                            var oUl=oDiv.find('ul');
+                            var oPrev=oDiv.find('.prev');
+                            var oNext=oDiv.find('.next');
+                            var now=0;
+
+                            // 本月
+                            create();
+
+                            // 下一个
+                            oNext.click(function (){
+                                now++;
+
+                                create();
+                            });
+
+                            // 下一个
+                            oPrev.click(function (){
+                                now--;
+
+                                create();
+                            });
+
+                            function create()
+                            {
+                                oUl.html('');
+                                // 处理span日期  2015年1月
+                                var oDate=new Date();
+                                oDate.setMonth(oDate.getMonth()+now, 1);
+                                var y=oDate.getFullYear();
+                                var m=oDate.getMonth()+1;
+                                oSpan.html(y+'年'+m+'月');
+
+                                // 空的
+                                var oDate=new Date();
+                                oDate.setMonth(oDate.getMonth()+now, 1);
+                                oDate.setDate(1); // 把oDate设置成这个月第一天
+                                var d=oDate.getDay();
+                                d= d==0 ? 7 : d;
+                                for (var i=0; i<d-1; i++)
+                                {
+                                    $('<li><a href=javascript:;></a></li>').appendTo(oUl);
+                                }
+
+                                // 创建日期
+                                var oDate=new Date();
+                                oDate.setMonth(oDate.getMonth()+now, 1);
+                                oDate.setMonth(oDate.getMonth()+1, 1);
+                                oDate.setDate(0);
+                                var total=oDate.getDate();
+                                for (var i=0; i<total; i++)
+                                {
+                                    $('<li><a href=javascript:;>'+(i+1)+'</a></li>').appendTo(oUl);
+                                }
+
+//                                加class
+                                var oDate=new Date();
+                                var today=oDate.getDate();
+                                var aLi=oUl.children();
+                                if (now == 0)
+                                {
+                                    for (var i=0; i<aLi.length; i++)
+                                    {
+                                        if (aLi.eq(i).find('a').html() == today) // 今天
+                                        {
+                                            aLi.eq(i).find('a').addClass('today');
+                                        }
+                                        else if (aLi.eq(i).find('a').html() < today)
+                                        {
+                                            aLi.eq(i).addClass('past');
+                                        }
+                                    }
+                                }
+                                else if (now < 0)
+                                {
+                                    aLi.addClass('past');
+                                }
+                            }
+
+                        });
+                    </script>
+                </div>
+                <div class="banner-item">
+                    <h3>最新评论</h3>
+                    <div class="new-comment">
+                        <div class="new-comment-item">
+                            <p><a href="javascript:;">1.Re:多线程---静态同步函数的锁是class（转载）</a></p>
+                            <p> PS:利用双重判断可以提高单例模式的效率并不是让锁更安全的问题。如懒汉式的单例模式中public static Single getInstance(){ if(s == null) { ......</p>
+                        </div>
+                    </div>
+                    <div class="new-comment">
+                        <div class="new-comment-item">
+                            <p><a href="javascript:;">2.Re:多线程---静态同步函数的锁是class（转载）</a></p>
+                            <p> PS:利用双重判断可以提高单例模式的效率并不是让锁更安全的问题。如懒汉式的单例模式中public static Single getInstance(){ if(s == null) { ......</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="l main-content">
                 <div class="item">
                     <h2><a href="javascript;;">使用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡出现的无法加载mod_jk.conf文件的问题</a></h2>
