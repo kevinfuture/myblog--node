@@ -22,11 +22,7 @@ router.get('/Essay/newessay/:caption?', function(req, res, next) {
 
 router.post('/Essay/newessay/:caption?', function(req, res, next) {
     mongoose.model('EssayPost').count({username:req.session.user.name,caption:req.body.caption},function(err,essay) {
-        console.log('*************************************:'+essay);
-
         if (essay==0) {
-            console.log('################'+essay);
-
             var newEssayPost = new EssayPost.EssayPost({
                 username: req.session.user.name,
                 caption: req.body.caption,
@@ -44,11 +40,7 @@ router.post('/Essay/newessay/:caption?', function(req, res, next) {
             });
         }else{
             mongoose.model('EssayPost').findOneAndUpdate({username:req.session.user.name,caption:req.body.caption},{caption:req.body.caption,content:req.body.content}, function (err, essay) {
-                console.log('essay1111111:'+essay);
-
                 if (err) {
-                    console.log('essayerrerrerrr:'+essay);
-
                     req.flash('error', err);
                     return res.render('Blog/Essay/newessay', {
                         title: req.session.user.name+'的随笔',
@@ -56,7 +48,6 @@ router.post('/Essay/newessay/:caption?', function(req, res, next) {
                         content:essay==null?null:essay.content
                     });
                 }
-                console.log('essayzuihou:'+essay);
                 return res.render('Blog/index', {
                     title: req.session.user.name
                 });
