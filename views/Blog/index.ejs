@@ -1,16 +1,16 @@
 <% include header.ejs %>
 <div id="enter-index">
     <div class="wrapper">
-        <div class="blog-status r"> 随笔- 15  文章- 0  评论- 3 </div>
+        <div class="blog-status r"> 随笔- <%=essaycount%>  评论- 3(写死了) </div>
         <div class="clearfix">
             <div class="l main-banner">
                 <div class="banner-item">
                     <h3>公告</h3>
                     <div class="banner-item-notice">
-                        <p> 昵称：<a href="javascript:;">kevinfuture</a></p>
-                        <p> 园龄：<a href="javascript:;">1年</a></p>
-                        <p> 关注：<a href="javascript:;">0</a></p>
-                        <p> <a href="javascript:;">+加关注</a></p>
+                        <p> 昵称：<a href="javascript:;"><%= title %></a></p>
+                        <p> 园龄：<a href="javascript:;"><%=user.baseObj[0].Date%></a></p>
+                        <p> 关注：<a href="javascript:;">0（写死了）</a></p>
+                        <p> <a href="javascript:;">+加关注（写死了）</a></p>
                     </div>
                     <div class="mycalender"> </div>
                     <script>
@@ -134,31 +134,16 @@
                 </div>
             </div>
             <div class="l main-content">
+                <% if(essaylist){%>
+                <%essaylist.forEach(function(value,index,array){%>
+                <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
                 <div class="item">
-                    <h2><a href="javascript;;">使用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡出现的无法加载mod_jk.conf文件的问题</a></h2>
-                    <p>摘要: 用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡的如果出现了问题，可以用cmd cd到Apache安装文件的bin下，运行httpd文件，错误信息就会打印出来。我这里出现的问题是 Include conf/mod_jk.conf无法加载该配置文件（英文翻译过来就是...阅读全文</p>
-                    <p class="con-msg">posted @ 2015-02-12 15:37 kevinfuture 阅读(<span>3</span>) 评论(<span>0</span>)<a href="javascript:;">编辑</a> </p>
+                    <h2><a href="javascript;;"><%=array[index].caption%></a></h2>
+                    <p>摘要:<%=array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index].username%>/<%=array[index].caption%>">阅读全文</a></p>
+                    <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span>0(写死了)</span>)<a href="/Essay/newessay/<%=array[index].caption%>">编辑</a> </p>
                 </div>
-                <div class="item">
-                    <h2><a href="javascript;;">使用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡出现的无法加载mod_jk.conf文件的问题</a></h2>
-                    <p>摘要: 用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡的如果出现了问题，可以用cmd cd到Apache安装文件的bin下，运行httpd文件，错误信息就会打印出来。我这里出现的问题是 Include conf/mod_jk.conf无法加载该配置文件（英文翻译过来就是...阅读全文</p>
-                    <p class="con-msg">posted @ 2015-02-12 15:37 kevinfuture 阅读(<span>3</span>) 评论(<span>0</span>)<a href="javascript:;">编辑</a> </p>
-                </div>
-                <div class="item">
-                    <h2><a href="javascript;;">使用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡出现的无法加载mod_jk.conf文件的问题</a></h2>
-                    <p>摘要: 用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡的如果出现了问题，可以用cmd cd到Apache安装文件的bin下，运行httpd文件，错误信息就会打印出来。我这里出现的问题是 Include conf/mod_jk.conf无法加载该配置文件（英文翻译过来就是...阅读全文</p>
-                    <p class="con-msg">posted @ 2015-02-12 15:37 kevinfuture 阅读(<span>3</span>) 评论(<span>0</span>)<a href="javascript:;">编辑</a> </p>
-                </div>
-                <div class="item">
-                    <h2><a href="javascript;;">使用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡出现的无法加载mod_jk.conf文件的问题</a></h2>
-                    <p>摘要: 用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡的如果出现了问题，可以用cmd cd到Apache安装文件的bin下，运行httpd文件，错误信息就会打印出来。我这里出现的问题是 Include conf/mod_jk.conf无法加载该配置文件（英文翻译过来就是...阅读全文</p>
-                    <p class="con-msg">posted @ 2015-02-12 15:37 kevinfuture 阅读(<span>3</span>) 评论(<span>0</span>)<a href="javascript:;">编辑</a> </p>
-                </div>
-                <div class="item">
-                    <h2><a href="javascript;;">使用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡出现的无法加载mod_jk.conf文件的问题</a></h2>
-                    <p>摘要: 用Apache + mod_jk + tomcat来实现tomcat集群的负载均衡的如果出现了问题，可以用cmd cd到Apache安装文件的bin下，运行httpd文件，错误信息就会打印出来。我这里出现的问题是 Include conf/mod_jk.conf无法加载该配置文件（英文翻译过来就是...阅读全文</p>
-                    <p class="con-msg">posted @ 2015-02-12 15:37 kevinfuture 阅读(<span>3</span>) 评论(<span>0</span>)<a href="javascript:;">编辑</a> </p>
-                </div>
+                <%});%>
+                <% }%>
             </div>
         </div>
         <div class="clearfix">
