@@ -20,21 +20,48 @@ router.get('/Essay/newessay/:caption?', function(req, res, next) {
     });
 });
 
-router.post('/Essay/newessay', function(req, res, next) {
-    var newEssayPost = new EssayPost.EssayPost({
-        username: req.session.user.name,
-        caption:req.body.caption,
-        content:req.body.content
-    });
-    newEssayPost.save(function(err) {
-        if (err) {
-            req.flash('error', err);
-            return res.redirect('/Essay/newessay');
+router.post('/Essay/newessay/:caption?', function(req, res, next) {
+    mongoose.model('EssayPost').count({username:req.session.user.name,caption:req.body.caption},function(err,essay) {
+        console.log('*************************************:'+essay);
+
+        if (essay==0) {
+            console.log('################'+essay);
+
+            var newEssayPost = new EssayPost.EssayPost({
+                username: req.session.user.name,
+                caption: req.body.caption,
+                content: req.body.content
+            });
+            newEssayPost.save(function (err) {
+                if (err) {
+                    req.flash('error', err);
+                    return res.redirect('/Essay/newessay');
+                }
+                req.flash('success', '创建新随笔成功！！！');
+                res.render('Blog/index', {
+                    title: req.session.user.name
+                });
+            });
+        }else{
+            mongoose.model('EssayPost').findOneAndUpdate({username:req.session.user.name,caption:req.body.caption},{caption:req.body.caption,content:req.body.content}, function (err, essay) {
+                console.log('essay1111111:'+essay);
+
+                if (err) {
+                    console.log('essayerrerrerrr:'+essay);
+
+                    req.flash('error', err);
+                    return res.render('Blog/Essay/newessay', {
+                        title: req.session.user.name+'的随笔',
+                        caption:essay==null?null:essay.caption,
+                        content:essay==null?null:essay.content
+                    });
+                }
+                console.log('essayzuihou:'+essay);
+                return res.render('Blog/index', {
+                    title: req.session.user.name
+                });
+            });
         }
-        req.flash('success', '创建新随笔成功！！！');
-        res.render('Blog/index',{
-            title:req.session.user.name
-        });
     });
 });
 module.exports = router;
