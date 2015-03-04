@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var ueditor = require("ueditor");
 var moment = require('moment');
 //引入eventproxy模块用来解决异步嵌套回调问题
-var EventProxy = require('eventproxy');
+var EventProxy = require('eventproxy');//还没有使用
 
 
 var setting = require('./setting');
@@ -35,6 +35,7 @@ var blogindex= require('./routes/BlogController/index');
 //随笔的控制层
 var newessay= require('./routes/BlogController/Essay/newessay');
 var essaylist= require('./routes/BlogController/Essay/essaylist');
+var showessay= require('./routes/BlogController/Essay/showessay');
 
 //相册的控制层
 var photo= require('./routes/BlogController/Album/photo');
@@ -108,6 +109,7 @@ app.get('/:users',blogindex);
 app.get('/Essay/newessay/:caption?',newessay);
 app.post('/Essay/newessay',newessay);
 app.get('/Essay/essaylist',essaylist);
+app.get('/Essay/showessay/:caption?',showessay);
 
 //相册的路由指向
 app.get('/Album/photo',photo);
