@@ -1,4 +1,4 @@
-<script>
+<script>//思路就是：先在index.js中把按照月份的内容查出来得到对象组，然后根据对象组用forEach查出对应天的count是否不为0//或者在model中写静态方法
     $(function (){
         // 创建
         $('<div class="calender"> \
@@ -29,14 +29,14 @@
         // 本月
         create();
 
-        // 下一个
+        // 下个月
         oNext.click(function (){
             now++;
 
             create();
         });
 
-        // 下一个
+        // 上个月
         oPrev.click(function (){
             now--;
 
@@ -72,7 +72,8 @@
             var total=oDate.getDate();
             for (var i=0; i<total; i++)
             {
-                $('<li><a href=javascript:;>'+(i+1)+'</a></li>').appendTo(oUl);
+                //if(所在日期没有文章){直接返回没有链接的<li>标签}，否则返回有链接的标签
+                $('<li><a href=/<%=user.name%>>'+(i+1)+'</a></li>').appendTo(oUl);
             }
 
 //                                加class

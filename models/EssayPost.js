@@ -11,6 +11,7 @@ var EssayPostSchema = new Schema({
     username:String,
     caption:{type:String,default:'请输入标题',index: true},//逻辑判断是否是一个人的标题，同一个人不允许出现相同内容的标题
     content:String,
+    TDate:String,
     browsercount:{type:Number,default:0},
     baseObj:{type:Array,default:baseObject.BaseObject.call(this)}
 });
