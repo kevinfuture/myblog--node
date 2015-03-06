@@ -4,8 +4,7 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 var User = require('../../models/User.js');
 var EssayPost = require('../../models/EssayPost');
-var EventProxy = require('./eventproxy');
-var proxy = new EventProxy();
+
 
 /* GET home page. */
 router.get('/:users', function(req, res, next) {
