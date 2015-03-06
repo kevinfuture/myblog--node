@@ -42,7 +42,6 @@
 
             create();
         });
-
         function create()
         {
             oUl.html('');
@@ -70,10 +69,16 @@
             oDate.setMonth(oDate.getMonth()+1, 1);
             oDate.setDate(0);
             var total=oDate.getDate();
+
             for (var i=0; i<total; i++)
             {
                 //if(所在日期没有文章){直接返回没有链接的<li>标签}，否则返回有链接的标签
-                $('<li><a href=/<%=user.name%>>'+(i+1)+'</a></li>').appendTo(oUl);
+                $('<li><a href="" onclick="postdate(this)">'+(i+1)+'</a></li>').appendTo(oUl);
+
+
+            }
+            function postdate(_this){
+                _this.attr('href',<%=user.name%>+'/?'+m+'/'+_this.html()+'/'+y);
             }
 
 //                                加class
@@ -99,7 +104,6 @@
                 aLi.addClass('past');
             }
         }
-
     });
 //    $(function(){//这里是@kevinfuture添加的分页的测试脚本
 //
