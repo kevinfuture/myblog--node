@@ -16,11 +16,11 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
             mongoose.model('EssayPost').findOneAndUpdate({_id:req.params._id},{browsercount:++(essay.browsercount)}, function (err, essay) {
                 if (err) {
                     req.flash('error', err);
-                    console.log('errrrrrrrrrrrrrrr'+err);
                     return res.redirect('/');
                 }
             });
         }
+        req.session.essay = essay;
         res.render('Blog/Essay/showessay', {
             essay:essay
         });

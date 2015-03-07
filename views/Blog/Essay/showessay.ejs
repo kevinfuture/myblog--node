@@ -17,6 +17,22 @@
 <p>标题<%= essay.caption %></p>
 <input type="hidden" id="essaycontent" name="essaycontent" value="<%=essay.content%>"/>
 <span>内容：</span>
-<p id="showessay"></p   >
+<p id="showessay"></p>
+
+<form class="form-horizontal" method="post" action="/Essay/comment/:_id">
+    <fieldset>
+        <legend><%=user.name%></legend>
+        <div class="control-group">
+            <label class="control-label" for="commentContent">评论</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" id="commentContent" name="commentContent">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">提交评论</button>
+        </div>
+    </fieldset>
+</form>
+
 </body>
 </html>

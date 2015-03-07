@@ -36,6 +36,7 @@ var blogindex= require('./routes/BlogController/index');
 var newessay= require('./routes/BlogController/Essay/newessay');
 var essaylist= require('./routes/BlogController/Essay/essaylist');
 var showessay= require('./routes/BlogController/Essay/showessay');
+var comment= require('./routes/BlogController/Essay/comment');
 
 //相册的控制层
 var photo= require('./routes/BlogController/Album/photo');
@@ -78,6 +79,7 @@ app.use(function(req, res, next){
     console.log("app.usr local");
     res.locals.user = req.session.user;
     res.locals.post = req.session.post;
+    res.locals.essay = req.session.essay;
     var error = req.flash('error');
     res.locals.error = error.length ? error : null;
 
@@ -110,6 +112,7 @@ app.get('/Essay/newessay/:_id?',newessay);
 app.post('/Essay/newessay',newessay);
 app.get('/:user?/Essay/essaylist',essaylist);
 app.get('/Essay/showessay/:_id?',showessay);
+app.post('/Essay/comment/:_id?',comment);
 
 //相册的路由指向
 app.get('/Album/photo',photo);
