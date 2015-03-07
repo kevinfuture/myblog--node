@@ -22,7 +22,6 @@ router.get('/:users?/:calenderdate?', function(req, res, next) {
                 mongoose.model('EssayPost').find({username: name}, function (err, essaylist) {//这里返回的是对象
                     //***************注意以后这里要做分页********************
                     res.render('Blog/index', {
-                        title: name,
                         user: user,
                         essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
                         essaylist: essaylist//文章的对象
@@ -34,7 +33,6 @@ router.get('/:users?/:calenderdate?', function(req, res, next) {
                 mongoose.model('EssayPost').find({username: name,TDate:splitname[1]}, function (err, essaylist) {//这里返回的是对象
                     //***************注意以后这里要做分页********************
                     res.render('Blog/index', {
-                        title: name,
                         user: user,
                         essaycount: essaycount==0?0:essaycount,//文章数目
                         essaylist:essaylist//文章的对象

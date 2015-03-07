@@ -7,7 +7,7 @@
                     <div class="banner-item">
                         <h3>公告</h3>
                         <div class="banner-item-notice">
-                            <p> 昵称：<a href="javascript:;"><%= title %></a></p>
+                            <p> 昵称：<a href="javascript:;"><%= user.name %></a></p>
                             <p> 园龄：<a href="javascript:;"><%=user.baseObj[0].Date%></a></p>
                             <p> 关注：<a href="javascript:;">0（写死了）</a></p>
                             <p> <a href="javascript:;">+加关注（写死了）</a></p>
@@ -35,7 +35,7 @@
                         <%essaylist.forEach(function(value,index,array){%>
                         <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
                         <div class="item">
-                            <h2><a href="javascript;;"><%=array[index].caption%></a></h2>
+                            <h2><a href="/Essay/showessay/<%=array[index]._id%>"><%=array[index].caption%></a></h2>
                             <p>摘要:<%=array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
                             <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span>0(写死了)</span>)<a href="/Essay/newessay/<%=array[index]._id%>">编辑</a> </p>
                         </div>
@@ -47,7 +47,7 @@
             <div class="page r"><a href="javascript:;">下一页</a></div>
         </div>
         <div class="clearfix copy-right">
-            Copyright ©2015 <%=title%>
+            Copyright ©2015 <%=user.name%>
         </div>
     </div>
 
