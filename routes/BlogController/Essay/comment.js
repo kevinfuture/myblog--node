@@ -9,12 +9,12 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
     { req.flash('error', '请登录后评论！！！');
         return res.redirect('/login');
     }
-    mongoose.model('Comment').count({_id: req.params._id}, function (err, comment) {
-        if (!comment) {
+    mongoose.model('Comment').count({_id: req.params._id}, function (err, commentObj) {
+        if (!commentObj) {
             var newComment = new CommentSchema.Comment({
                 username: req.session.essay.username,//这里要取得参数
                 caption: req.session.essay.caption,
-                commentuser: req.session.user.name,
+                commentUser: req.session.user.name,
                 commentContent: req.body.commentContent
             });
             newComment.save(function (err) {
@@ -23,8 +23,14 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
                     return res.redirect('/Essay/showessay');
                 }
                 req.flash('success', '评论成功！！！');
-                res.render('Blog/Essay/showessay', {
-                    essay: req.session.essay
+                mongoose.model('Comment').find({
+                    username: req.session.essay.username,
+                    caption: req.session.essay.caption
+                }, function (err, commentlist) {
+                    res.render('Blog/Essay/showessay', {
+                        essay: req.session.essay,
+                        comment:commentlist
+                    });
                 });
             });
         } else {
