@@ -109,7 +109,7 @@ app.get('/:users?/:calenderdate?',blogindex);
 app.get('/Essay/newessay/:_id?',newessay);
 app.post('/Essay/newessay',newessay);
 app.get('/:user?/Essay/essaylist',essaylist);
-app.get('/Essay/showessay/:username?/:caption?',showessay);
+app.get('/Essay/showessay/:_id?',showessay);
 
 //相册的路由指向
 app.get('/Album/photo',photo);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
+    <title><%= essay.username %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.js"> </script>
     <script type="text/javascript">
@@ -13,9 +13,9 @@
     </script>
 </head>
 <body>
-<h1><%= title %></h1>
-<p>标题<%= caption %></p>
-<input type="hidden" id="essaycontent" name="essaycontent" value="<%=content%>"/>
+<h1><%= essay.username %></h1>
+<p>标题<%= essay.caption %></p>
+<input type="hidden" id="essaycontent" name="essaycontent" value="<%=essay.content%>"/>
 <span>内容：</span>
 <p id="showessay"></p   >
 </body>
