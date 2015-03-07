@@ -6,17 +6,15 @@ var User = require('../../../models/User');//在newessay.js文件所在父目录
 var EssayPost = require('../../../models/EssayPost');
 
 /* GET home page. */
-router.get('/Essay/newessay/:caption?', function(req, res, next) {
+router.get('/Essay/newessay/:_id?', function(req, res, next) {
         if (!req.session.user) {
             req.flash('error', '请登录！！！');
             return res.redirect('/login');
         }
-    console.log('caption:'+req.params.caption);
-    mongoose.model('EssayPost').findOne({username:req.session.user.name,caption:req.params.caption},function(err,essay){
+    mongoose.model('EssayPost').findOne({_id:req.params._id},function(err,essay){
+        console.log('caption:'+essay);
         res.render('Blog/Essay/newessay', {
-            title: req.session.user.name+'的随笔',
-            caption:essay==null?null:essay.caption,
-            content:essay==null?null:essay.content
+            essay:essay
         });
     });
 });

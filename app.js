@@ -106,7 +106,7 @@ app.get('/skipmiddle',skipmiddle);
 //以下是博客园的路由指向
 app.get('/:users?/:calenderdate?',blogindex);
 //随笔的路由指向
-app.get('/Essay/newessay/:caption?',newessay);
+app.get('/Essay/newessay/:_id?',newessay);
 app.post('/Essay/newessay',newessay);
 app.get('/:user?/Essay/essaylist',essaylist);
 app.get('/Essay/showessay/:username?/:caption?',showessay);

@@ -14,7 +14,7 @@
     <div class="item">
         <h2><a href="javascript;;"><%=array[index].caption%></a></h2>
         <p>摘要:<%=array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index].username%>/<%=array[index].caption%>">阅读全文</a></p>
-        <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span>0(写死了)</span>)<a href="/Essay/newessay/<%=array[index].caption%>">编辑</a> </p>
+        <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span>0(写死了)</span>)<a href="/Essay/newessay/<%=array[index]._id%>">编辑</a> </p>
     </div>
 <%});%>
 <% }%>
