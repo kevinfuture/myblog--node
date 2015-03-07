@@ -98,16 +98,17 @@
             {
                 aLi.addClass('past');
             }
+
+            var aCalDate = $('.calender ul a');
+            var oTit = $('.calender .title em');
+            for(var i=0;i<aCalDate.length;i++){
+                var year =  oTit.eq(0).html();
+                var mon =  oTit.eq(1).html();
+                var date =  aCalDate.eq(i).html();
+                aCalDate.eq(i).attr('href','/'+<%=user.name%>+'/?'+mon+'/'+date+'/'+year);
+            }
         }
 
-        var oCalDate = $('.calender ul a');
-        var oTit = $('.calender .title em');
-        oCalDate.click(function(){
-            var year =  oTit.eq(0).html();
-            var mon =  oTit.eq(1).html();
-            var date =$(this).html();
-            $(this).attr('href',<%=user.name%>+'/?'+mon+'/'+date+'/'+year);
-        });
 
     });
 //    $(function(){//这里是@kevinfuture添加的分页的测试脚本
