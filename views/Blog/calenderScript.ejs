@@ -105,7 +105,7 @@
                 var year =  oTit.eq(0).html();
                 var mon =  oTit.eq(1).html();
                 var date =  aCalDate.eq(i).html();
-                aCalDate.eq(i).attr('href',<%=user.name%>+'/?'+mon+'/'+date+'/'+year);
+                aCalDate.eq(i).attr('href','/'+<%=user.name%>+'/?'+mon+'/'+date+'/'+year);
             }
         }
 
