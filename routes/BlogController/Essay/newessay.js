@@ -21,7 +21,7 @@ router.get('/Essay/newessay/:caption?', function(req, res, next) {
     });
 });
 
-router.post('/Essay/newessay/:caption?', function(req, res, next) {
+router.post('/Essay/newessay', function(req, res, next) {
     mongoose.model('EssayPost').count({username:req.session.user.name,caption:req.body.caption},function(err,essay) {
         mongoose.model('EssayPost').count({username: req.session.user.name}, function (err, essaycount) {//这里返回的是总的文章个数
             mongoose.model('EssayPost').find({username:  req.session.user.name}, function (err, essaylist) {//这里返回的是对象
