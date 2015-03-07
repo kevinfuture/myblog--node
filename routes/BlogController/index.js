@@ -9,13 +9,7 @@ var EssayPost = require('../../models/EssayPost');
 /* GET home page. */
 router.get('/:users?/:calenderdate?', function(req, res, next) {
     var splitname = req.url.substring(1,30).split('/?');//获取地址栏信息
-    var samename=splitname[0].split('/');
-    var name=samename[0];
-    console.log('splitname:'+splitname);
-    console.log('日期:'+splitname[1]);
-    console.log('name:'+name);
-    console.log('samename:'+samename);
-    console.log('浏览地址:'+req.param('hiddenDate'));
+    var name=splitname[0].split('/');
     mongoose.model('User').findOne({name:name},function(err,user) {
         if (!user) {//这个地方要重新写,不要跳转到登录页面，要在进行判断
             req.flash('error', '没有找到园主！请登录使用！');
