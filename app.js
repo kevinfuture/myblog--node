@@ -104,11 +104,11 @@ app.post('/modifysecret',modifysecret);
 //跳转路由指向
 app.get('/skipmiddle',skipmiddle); 
 //以下是博客园的路由指向
-app.get('/:users/:calenderdate?',blogindex);
+app.get('/:users?/:calenderdate?',blogindex);
 //随笔的路由指向
 app.get('/Essay/newessay/:caption?',newessay);
 app.post('/Essay/newessay',newessay);
-app.get('/Essay/essaylist',essaylist);
+app.get('/:user?/Essay/essaylist',essaylist);
 app.get('/Essay/showessay/:username?/:caption?',showessay);
 
 //相册的路由指向

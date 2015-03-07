@@ -5,7 +5,7 @@ var moment = require('moment');
 var EssayPost = require('../../../models/EssayPost');
 
 /* GET home page. */
-router.get('/Essay/essaylist', function(req, res, next) {
+router.get('/:user?/Essay/essaylist', function(req, res, next) {
     if (!req.session.user) {
         req.flash('error', '请登录以管理随笔！！');
         return res.redirect('/login');
