@@ -75,9 +75,6 @@
                 //if(所在日期没有文章){直接返回没有链接的<li>标签}，否则返回有链接的标签
                 $('<li><a href="javascript:;">'+(i+1)+'</a></li>').appendTo(oUl);
             }
-            <!--function postdate(_this){-->
-                <!--$(_this).attr('href',<%=user.name%>+'/?'+m+'/'+ $(_this).html()+'/'+y);-->
-            <!--}-->
 
 //                                加class
             var oDate=new Date();
@@ -109,7 +106,7 @@
             var year =  oTit.eq(0).html();
             var mon =  oTit.eq(1).html();
             var date =$(this).html();
-            $(this).attr('href',year+'/'+mon+'/'+date);
+            $(this).attr('href',<%=user.name%>+'/?'+mon+'/'+date+'/'+year);
         });
 
     });

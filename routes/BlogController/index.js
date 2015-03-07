@@ -10,7 +10,7 @@ router.get('/:users/:calenderdate?', function(req, res, next) {
     var splitname = req.url.substring(1,30).split('/?');//获取地址栏信息
     var name=splitname[0];
     console.log('#####:'+splitname[0]);
-    console.log('*************:'+splitname[1]);
+    console.log('*************:'+name);
     mongoose.model('User').findOne({name:name},function(err,user) {
         if (!user) {//这个地方要重新写,不要跳转到登录页面，要在进行判断
             req.flash('error', '没有找到园主！请登录使用！');
@@ -29,8 +29,8 @@ router.get('/:users/:calenderdate?', function(req, res, next) {
                 });
             });
         }else{
-            mongoose.model('EssayPost').count({username: name,TDate:req.params.calenderdate}, function (err, essaycount) {//这里返回的是总的文章个数
-                mongoose.model('EssayPost').find({username: name,TDate:req.params.calenderdate}, function (err, essaylist) {//这里返回的是对象
+            mongoose.model('EssayPost').count({username: name,TDate:splitname[1]}, function (err, essaycount) {//这里返回的是总的文章个数
+                mongoose.model('EssayPost').find({username: name,TDate:splitname[1]}, function (err, essaylist) {//这里返回的是对象
                     //***************注意以后这里要做分页********************
                     res.render('Blog/index', {
                         title: name,
