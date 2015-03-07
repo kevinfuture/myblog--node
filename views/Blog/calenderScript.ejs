@@ -50,7 +50,7 @@
             oDate.setMonth(oDate.getMonth()+now, 1);
             var y=oDate.getFullYear();
             var m=oDate.getMonth()+1;
-            oSpan.html(y+'年'+m+'月');
+            oSpan.html('<em>'+y+'</em>年<em>'+m+'</em>月');
 
             // 空的
             var oDate=new Date();
@@ -73,13 +73,11 @@
             for (var i=0; i<total; i++)
             {
                 //if(所在日期没有文章){直接返回没有链接的<li>标签}，否则返回有链接的标签
-                $('<li><a href="" onclick="postdate(this)">'+(i+1)+'</a></li>').appendTo(oUl);
-
-
+                $('<li><a href="javascript:;">'+(i+1)+'</a></li>').appendTo(oUl);
             }
-            function postdate(_this){
-                _this.attr('href',<%=user.name%>+'/?'+m+'/'+_this.html()+'/'+y);
-            }
+            <!--function postdate(_this){-->
+                <!--$(_this).attr('href',<%=user.name%>+'/?'+m+'/'+ $(_this).html()+'/'+y);-->
+            <!--}-->
 
 //                                加class
             var oDate=new Date();
@@ -104,6 +102,16 @@
                 aLi.addClass('past');
             }
         }
+
+        var oCalDate = $('.calender ul a');
+        var oTit = $('.calender .title em');
+        oCalDate.click(function(){
+            var year =  oTit.eq(0).html();
+            var mon =  oTit.eq(1).html();
+            var date =$(this).html();
+            $(this).attr('href',year+'/'+mon+'/'+date);
+        });
+
     });
 //    $(function(){//这里是@kevinfuture添加的分页的测试脚本
 //
