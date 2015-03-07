@@ -23,16 +23,16 @@
 <%comment.forEach(function(value,index,array){%>
 <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
 <div class="item">
-    <h2>评论日期：<%=array[index].baseObj[0].Date%><%=array[index].commentUser%>(评论人姓名)</h2>
-    <p><%=array[index].commentContent%>(评论内容)</p>
+    <h2>日期：<%=array[index].baseObj[0].Date%>来自用户：<%=array[index].commentUser%></h2>
+    <p>内容<%=array[index].commentContent%></p>
     <%if(array[index].commentUser==user.name){%>
-    <p class="con-msg"><a href="/Essay/comment<%array[index]._id%>">修改（跳转到连接）</a><a href="/<%array[index]._id%>">删除(暂时不做)</a></p>
+    <p class="con-msg"><a href="/Essay/comment/<%array[index]._id%>">修改（跳转到连接）</a><a href="/<%array[index]._id%>">删除(暂时不做)</a></p>
     <%}%>
 </div>
 <%});%>
 <% }%>
 
-<form class="form-horizontal" method="post" action="/Essay/comment/:_id">
+<form class="form-horizontal" method="post" action="/Essay/comment/">
     <fieldset>
         <legend><%=user.name%></legend>
         <div class="control-group">

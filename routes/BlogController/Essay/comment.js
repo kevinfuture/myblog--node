@@ -9,7 +9,8 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
     { req.flash('error', '请登录后评论！！！');
         return res.redirect('/login');
     }
-    mongoose.model('Comment').count({_id: req.params._id}, function (err, commentObj) {
+    mongoose.model('Comment').count({_id: req.session.essay._id}, function (err, commentObj) {
+        console.log('dayinchu#####:'+req.params._id);
         if (!commentObj) {
             var newComment = new CommentSchema.Comment({
                 username: req.session.essay.username,//这里要取得参数
