@@ -1,12 +1,15 @@
 <% include header.ejs %>
+
 <% if (user) { %>
 <%='开园时间：'+user.baseObj[0].Date+'密码：'+user.password%>
 <div class="hero-unit">
     <form class="form-horizontal" method="post">
+        <h1>基本资料</h1>
+        <hr/>
         <FIELDSET>
             <LEGEND>个人中心</LEGEND>
             <div class="control-group">
-                <label class="control-label" for="username">用户名</label>
+                <label class="control-label" for="username">昵称</label>
                 <div class="controls">
                     <input type="text" class="input-xlarge" id="username" name="username" value="<%= user.name%>" readonly="true">
                 </div>
@@ -27,11 +30,15 @@
                 <label class="control-label" for="email">邮箱</label>
                 <div class="controls">
                     <input type="text" class="input-xlarge" id="email" name="email" value="<%= user.email%>">
-</div>
-</div>
+                </div>
+            </div>
+            <hr/>
 <!--<div class="form-actions">-->
+<div class='action-btn'>
     <button type="submit" class="btn btn-primary">提交</button>
     <a href="/confirmsecret">修改密码</a>
+</div>
+
 <!--</div>-->
 </FIELDSET>
 </form>

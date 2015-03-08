@@ -2,11 +2,12 @@
 /*初始化*/
 
 body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,legend{ margin:0;padding:0;}
-body{background:#fff;color:#333;font-size:14px; font-family: Arial, sans-serif;}
+body{background:#fff;color:#333;font-size:14px; font-family: 'microsoft yahei';}
 ul,ol,li{list-style-type:none;}
 img,fieldset{border:0 ;}
 legend{display:none;}
 select,input,img,select{ vertical-align:middle;}
+input,button{font-family:'mocrosoft yahei';}
 a{text-decoration:none;color:#333;}
 
 .l{float:left}
@@ -15,6 +16,13 @@ a{text-decoration:none;color:#333;}
 .clearfix:after {content:"";display:block;clear: both;}
 .clearfix{zoom:1;}
 
+.navbar .nav{float:right;position:static;}
+.navbar-inner{background:rgb(85,82,75);color: #ddd;}
+.navbar .brand {text-shadow:none;color:#ddd;}
+.navbar .brand:hover{text-decoration:underline;color:#ddd;}
+.navbar .nav > li > a{text-shadow:none;color:#ddd;}
+.navbar .nav > li > a:hover{text-decoration:underline;color:#ddd;}
+.navbar-inner a{color:#ddd;text-shadow:none}
 /*index页面*/
 .index .login{position:absolute;right:140px;top:10px;z-index:1031;}
 .index .login a{padding-left:20px;}
@@ -81,7 +89,18 @@ a{text-decoration:none;color:#333;}
 #reg{width:440px;height:340px;margin:0 auto;padding-top:20px;background:#fff;border:1px solid #e5e5e5;border-radius:4px;box-shadow: 0 1px 2px rgba(0,0,0,.05);}
 #reg .form-horizontal .control-label{width:100px;}
 #reg .form-horizontal .controls {   margin-left: 120px;}
+#reg .form-horizontal input + .help-block{padding-left:20px;}
 #reg input{height:30px;margin-left:20px;}
 #reg button{width:284px;height:48px;margin-left:140px;}
 #reg .login-btn{float:right;margin:20px 44px 0 0 ;color:#666;font-family:'microsoft yahei';;}
 
+.hero-unit{background:rgb(250,249,247);border-radius:0;}
+.hero-unit h1{font-size:24px;}
+.hero-unit fieldset{height:340px;}
+.hero-unit .form-horizontal .control-label{padding-top:6px;width:140px;}
+.hero-unit input{width:260px;height:26px;}
+.hero-unit .action-btn {position:relative;top:-60px;left: 188px;}
+.hero-unit .action-btn button{width:120px;height:38px;font-family: 'microsoft yahei';margin-right:20px;}
+.hero-unit .action-btn button:hover{box-shadow: 1px 1px 1px #006dcc;}
+.hero-unit .action-btn a{padding:9px 32px;font-size:14px;background-color: #006dcc;border-radius:4px;color:#fff;}
+.hero-unit .action-btn a:hover{text-decoration:none;box-shadow: 1px 1px 1px #006dcc; }
