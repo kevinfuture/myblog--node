@@ -112,6 +112,7 @@ app.get('/Essay/newessay/:_id?',newessay);
 app.post('/Essay/newessay',newessay);
 app.get('/:user?/Essay/essaylist',essaylist);
 app.get('/Essay/showessay/:_id?',showessay);
+app.get('/Essay/comment/:_id?',comment);
 app.post('/Essay/comment/:_id?',comment);
 
 //相册的路由指向

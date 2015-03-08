@@ -27,6 +27,7 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
             }
             req.session.essay = essay;
             res.render('Blog/Essay/showessay', {
+                commentContent:null,
                 essay: essay,
                 comment:commentlist
             });
