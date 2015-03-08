@@ -7,7 +7,7 @@ ul,ol,li{list-style-type:none;}
 img,fieldset{border:0 ;}
 legend{display:none;}
 select,input,img,select{ vertical-align:middle;}
-input,button{font-family:'mocrosoft yahei';}
+button{font-family:'mocrosoft yahei';}
 a{text-decoration:none;color:#333;}
 
 .l{float:left}
@@ -80,19 +80,24 @@ a{text-decoration:none;color:#333;}
 /*登陆页*/
 /*.alert-error{margin-top:60px;}*/
 /*.login-wrap{position:absolute;left:0;top:0;bottom:0;right:0;background:rgba(0,0,0,.4);z-index: 1031;}*/
-#login{width:362px;height:300px;margin:0 auto;padding-top:20px;background:#fff;border:1px solid #e5e5e5;border-radius:4px;box-shadow: 0 1px 2px rgba(0,0,0,.05);}
+#login{width:362px;height:300px;margin:40px auto 0;padding-top:20px;background:#fff;border:1px solid #e5e5e5;border-radius:4px;box-shadow: 0 1px 2px rgba(0,0,0,.05);}
 #login input{height:30px;margin-left:40px;}
-#login button{width:284px;height:40px;margin-left:40px;}
+#login button{width:284px;height:40px;margin-left:40px;font-family:'microsoft yahei';}
+#login button:hover{box-shadow:1px 1px 1px #006dcc;}
 #login .reg-btn{ float:right;margin:20px 44px 0 0 ;color:#666;font-family:'microsoft yahei';}
+
 #infocue{padding-top:58px;}
 
-#reg{width:440px;height:340px;margin:0 auto;padding-top:20px;background:#fff;border:1px solid #e5e5e5;border-radius:4px;box-shadow: 0 1px 2px rgba(0,0,0,.05);}
+#reg{width:440px;height:340px;margin:40px auto 0;padding-top:20px;background:#fff;border:1px solid #e5e5e5;border-radius:4px;box-shadow: 0 1px 2px rgba(0,0,0,.05);}
 #reg .form-horizontal .control-label{width:100px;}
 #reg .form-horizontal .controls {   margin-left: 120px;}
 #reg .form-horizontal input + .help-block{padding-left:20px;}
 #reg input{height:30px;margin-left:20px;}
-#reg button{width:284px;height:48px;margin-left:140px;}
+#reg button{width:284px;height:40px;margin-left:140px;font-family:'microsoft yahei';}
+
+#reg button:hover{box-shadow:1px 1px 1px #006dcc;}
 #reg .login-btn{float:right;margin:20px 44px 0 0 ;color:#666;font-family:'microsoft yahei';;}
+
 
 .hero-unit{background:rgb(250,249,247);border-radius:0;}
 .hero-unit h1{font-size:24px;}
@@ -104,3 +109,14 @@ a{text-decoration:none;color:#333;}
 .hero-unit .action-btn button:hover{box-shadow: 1px 1px 1px #006dcc;}
 .hero-unit .action-btn a{padding:9px 32px;font-size:14px;background-color: #006dcc;border-radius:4px;color:#fff;}
 .hero-unit .action-btn a:hover{text-decoration:none;box-shadow: 1px 1px 1px #006dcc; }
+
+#confirm-pass{width:400px;height:300px;margin:100px auto;padding-top: 20px;border:1px solid #999;border: 1px solid #e5e5e5; border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);}
+#confirm-pass .form-horizontal .control-label{width:100px;}
+#confirm-pass .form-horizontal .controls{margin-left:120px;}
+#confirm-pass .form-horizontal .controls .input-xlarge{width:220px;}
+#confirm-pass .safety{padding-left:120px;margin: 10px auto 16px;}
+#confirm-pass .safety span{display: block;float:left;margin:1px;text-align:center;width:76px;height:10px;background:#eee;}
+#confirm-pass .action-btn{ float: right;margin-right:46px;}
+
+#confirm-pass .action-btn .btn-primary{width:100px;height:30px;font-family:'microsoft yahei';}
