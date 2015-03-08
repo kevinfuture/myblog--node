@@ -15,19 +15,17 @@
                         <div class="mycalender"> </div>
                     </div>
                     <div class="banner-item">
-                        <h3>最新评论</h3>
+                        <h3>最近的10条评论</h3>
+                        <% if(newcommentlist){%>
+                        <%newcommentlist.forEach(function(value,index,array){%>
                         <div class="new-comment">
                             <div class="new-comment-item">
-                                <p><a href="javascript:;">1.Re:多线程---静态同步函数的锁是class（转载）</a></p>
-                                <p> PS:利用双重判断可以提高单例模式的效率并不是让锁更安全的问题。如懒汉式的单例模式中public static Single getInstance(){ if(s == null) { ......</p>
+                                <p>评论人：<%=array[index].commentUser%></p>
+                                <p>评论标题：<a href="/Essay/showessay/<%=array[index]._id%>"><%=array[index].caption%></a></p>
                             </div>
                         </div>
-                        <div class="new-comment">
-                            <div class="new-comment-item">
-                                <p><a href="javascript:;">2.Re:多线程---静态同步函数的锁是class（转载）</a></p>
-                                <p> PS:利用双重判断可以提高单例模式的效率并不是让锁更安全的问题。如懒汉式的单例模式中public static Single getInstance(){ if(s == null) { ......</p>
-                            </div>
-                        </div>
+                        <%});%>
+                        <% }%>
                     </div>
                 </div>
                 <div class="l main-content">

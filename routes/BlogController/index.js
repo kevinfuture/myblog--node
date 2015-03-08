@@ -19,23 +19,36 @@ router.get('/:users?/:calenderdate?', function(req, res, next) {
         user.baseObj[0].Date = age[0] + ' ' + age[1];
         if(!splitname[1]) {
             mongoose.model('EssayPost').count({username: name}, function (err, essaycount) {//这里返回的是总的文章个数
-                mongoose.model('EssayPost').find({username: name}, function (err, essaylist) {//这里返回的是对象
+                mongoose.model('EssayPost').find({username: name}).sort({'_id': -1}).limit(10).exec(function (err, essaylist) {//这里返回的是对象
                     //***************注意以后这里要做分页********************
-                    res.render('Blog/index', {
-                        user: user,
-                        essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
-                        essaylist: essaylist//文章的对象
+                    mongoose.model('Comment').find({username: req.session.user.name}).sort({'_id': -1}).limit(10).exec(function (err, newcommentlist) {
+                        newcommentlist.forEach(function (value, index, array) {
+                            array[index].baseObj[0].Date = moment(array[index].baseObj[0].Date).format('YYYY/MM/DD hh:mm a');
+                        });
+                        res.render('Blog/index', {
+                            user: user,
+                            essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
+                            essaylist: essaylist,//文章的对象
+                            newcommentlist:newcommentlist
+                        });
                     });
                 });
             });
         }else{
             mongoose.model('EssayPost').count({username: name,TDate:splitname[1]}, function (err, essaycount) {//这里返回的是总的文章个数
-                mongoose.model('EssayPost').find({username: name,TDate:splitname[1]}, function (err, essaylist) {//这里返回的是对象
+                mongoose.model('EssayPost').find({username: name,TDate:splitname[1]}).sort({'_id': -1}).limit(10).exec(function (err, essaylist) {//这里返回的是对象
                     //***************注意以后这里要做分页********************
-                    res.render('Blog/index', {
-                        user: user,
-                        essaycount: essaycount==0?0:essaycount,//文章数目
-                        essaylist:essaylist//文章的对象
+                    mongoose.model('Comment').find({username: req.session.user.name}).sort({'_id': -1}).limit(10).exec(function (err, newcommentlist) {
+                        newcommentlist.forEach(function (value, index, array) {
+                            array[index].baseObj[0].Date = moment(array[index].baseObj[0].Date).format('YYYY/MM/DD hh:mm a');
+                            console.log('时间：' + array[index].baseObj[0].Date);
+                        });
+                        res.render('Blog/index', {
+                            user: user,
+                            essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
+                            essaylist: essaylist,//文章的对象
+                            newcommentlist:newcommentlist
+                        });
                     });
                 });
             });

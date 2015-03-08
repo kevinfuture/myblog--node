@@ -11,7 +11,7 @@ router.get('/:user?/Essay/essaylist', function(req, res, next) {
         return res.redirect('/login');
     }
     mongoose.model('EssayPost').count({username:req.session.user.name}, function(err, essaypost) {
-        mongoose.model('EssayPost').find({username:req.session.user.name},function(err,essaypost){
+        mongoose.model('EssayPost').find({username:req.session.user.name}).sort({'_id': -1}).limit(10).exec(function(err,essaypost){
             essaypost.forEach(function(value,index,array){
                 array[index].baseObj[0].Date=moment(array[index].baseObj[0].Date).format('YYYY/MM/DD hh:mm a');
             });
