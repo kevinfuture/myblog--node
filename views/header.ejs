@@ -25,7 +25,7 @@
                     <li><a href="/login">登入</a></li>
                     <li><a href="/reg">注册</a></li>
                     <% } else { %>
-                    <li >欢迎你,<%= user.name%></li>
+                    <li class="wel-join" >欢迎你,<%= user.name%></li>
 
                     <li><a href="/<%=user.name%>" target="_blank">我的博客</a></li>
                     <li id="base-msg"><a  href="javascript:;">设置<i class="caret "></i></a>
@@ -50,11 +50,11 @@
 </div>
 <div id="container" class="container">
     <div id="infocue">
-    <% if (success) { %>
-    <div class="alert alert-success">
-        <%= success %></div>
-    <% } %>
-    <% if (error) { %>
-    <div class="alert alert-error">
-        <%= error %></div>
+        <% if (success) { %>
+        <div class="alert alert-success">
+            <%= success %></div>
+        <% } %>
+        <% if (error) { %>
+        <div class="alert alert-error">
+            <%= error %></div>
 <% } %>
