@@ -7,6 +7,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href="stylesheets/bootstrap-responsive.css" rel="stylesheet">
     <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/public.js"></script>
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -24,8 +25,10 @@
                     <li><a href="/login">登入</a></li>
                     <li><a href="/reg">注册</a></li>
                     <% } else { %>
-                    <!--<li id="base-msg"><a href="/users"><%= user.name%></a>-->
-                    <li id="base-msg"><a href="javascript:;"><%= user.name%></a>
+                    <li >欢迎你,<%= user.name%></li>
+
+                    <li><a href="/<%=user.name%>" target="_blank">我的博客</a></li>
+                    <li id="base-msg"><a  href="javascript:;">设置<i class="caret "></i></a>
                         <div class="hide">
                             <ul>
                                 <li><a href="javascript:;">基本资料</a></li>
@@ -36,17 +39,10 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="/<%=user.name%>" target="_blank">我的博客</a></li>
-                    <li><a href="/logout">登出</a></li>
                     <% } %>
                 </ul>
                 <script>
-                   $(function(){
-                       $(".nav #base-msg").click(function(){
-                           $('.nav #base-msg .hide').show();
-                       });
-                    
-                   });
+
                 </script>
             </div>
         </div>
