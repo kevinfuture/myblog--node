@@ -2,7 +2,7 @@
 /*初始化*/
 
 body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,legend{ margin:0;padding:0;}
-body{background:#fff;color:#333;font-size:14px; font-family: 'microsoft yahei';}
+body{background:url(../images/background.png);color:#333;font-size:14px; font-family: 'microsoft yahei';}
 ul,ol,li{list-style-type:none;}
 img,fieldset{border:0 ;}
 legend{display:none;}
@@ -17,12 +17,19 @@ a{text-decoration:none;color:#333;}
 .clearfix{zoom:1;}
 
 .navbar .nav{float:right;position:static;}
-.navbar-inner{background:rgb(85,82,75);color: #ddd;}
-.navbar .brand {text-shadow:none;color:#ddd;}
+.navbar-inner{background:rgba(85,82,75,.8);color: #ddd;}
+.navbar .brand {text-shadow:none;color:#ddd;margin-left:200px;}
 .navbar .brand:hover{text-decoration:underline;color:#ddd;}
+.navbar .nav{position:relative;margin-right:200px;}
 .navbar .nav > li > a{text-shadow:none;color:#ddd;}
 .navbar .nav > li > a:hover{text-decoration:underline;color:#ddd;}
 .navbar-inner a{color:#ddd;text-shadow:none}
+.nav .hide{position:absolute;top:50px;left:0;width:160px;padding:10px 0;background:#fff;border-radius:4px;}
+.nav .hide li{height:30px;line-height:30px;padding-left:20px;}
+.nav .hide li.line{height:1px;background:#ddd;margin:10px 0;}
+.nav .hide li a{color:#666;text-decoration:none;}
+.nav .hide li:hover{background-color: #0081c2;}
+.nav .hide li:hover a{color:#fff;}
 /*index页面*/
 .index .login{position:absolute;right:140px;top:10px;z-index:1031;}
 .index .login a{padding-left:20px;}

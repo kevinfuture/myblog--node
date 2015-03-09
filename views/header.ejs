@@ -5,10 +5,8 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <style type="text/css">
-
-    </style>
     <link href="stylesheets/bootstrap-responsive.css" rel="stylesheet">
+    <script src="/javascripts/jquery.js"></script>
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -26,11 +24,30 @@
                     <li><a href="/login">登入</a></li>
                     <li><a href="/reg">注册</a></li>
                     <% } else { %>
-                    <li><a href="/users">个人中心:<%= user.name%></a></li>
+                    <!--<li id="base-msg"><a href="/users"><%= user.name%></a>-->
+                    <li id="base-msg"><a href="javascript:;"><%= user.name%></a>
+                        <div class="hide">
+                            <ul>
+                                <li><a href="javascript:;">基本资料</a></li>
+                                <li><a href="javascript:;">修改头像</a></li>
+                                <li><a href="javascript:;">修改密码</a></li>
+                                <li class="line"></li>
+                                <li><a href="javascript:;">退出</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li><a href="/<%=user.name%>" target="_blank">我的博客</a></li>
                     <li><a href="/logout">登出</a></li>
                     <% } %>
                 </ul>
+                <script>
+                   $(function(){
+                       $(".nav #base-msg").click(function(){
+                           $('.nav #base-msg .hide').show();
+                       });
+                    
+                   });
+                </script>
             </div>
         </div>
     </div>
