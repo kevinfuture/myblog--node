@@ -6,6 +6,7 @@ body{background:url(../images/background.png);color:#333;font-size:14px; font-fa
 ul,ol,li{list-style-type:none;}
 img,fieldset{border:0 ;}
 legend{display:none;}
+em{font-style:normal;}
 select,input,img,select{ vertical-align:middle;}
 button{font-family:'mocrosoft yahei';}
 a{text-decoration:none;color:#333;}
@@ -34,13 +35,26 @@ a{text-decoration:none;color:#333;}
 /*index页面*/
 .index .login{position:absolute;right:140px;top:10px;z-index:1031;}
 .index .login a{padding-left:20px;}
+.index{  margin: auto; background: #f9f9f9;padding: 45px 0;}
+.index .create-blog{padding:60px 80px;}
+.index .create-blog h2{font-size: 16px;font-family: "微软雅黑";font-weight: 600;color: #312424;}
+#banner{width:1000px;margin:0 auto;}
+#banner .b_left{width:600px;height:300px;font-family:"微软雅黑";margin:5px 0px 0px 3px;}
+.b_left .bd { position:relative; float:left; width:480px;height:300px;overflow:hidden;}
+.b_left .bd img {width:480px;height:300px;}
+.b_left .hd {position:relative; width:110px; float:right; padding-right:4px; z-index:1; }
+.b_left .hd ul { position:relative; width:110px; overflow:hidden;   }
+.b_left .hd li { height:50px; padding:5px; overflow:hidden;  }
+.b_left .hd img {width:100px;height:50px; display:block;  }
+.b_left .hoverBg {position:absolute; top:0; left:-10px; width:124px; height:64px; z-index:100; background:url(../images/hover.png) no-repeat;
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../images/hover.png);
+    _background:none;
+}
+#banner .b_right{width:380px;height:272px;background:url("../images/qeq.jpg") no-repeat;box-shadow:0px 3px 10px #999;
+    position:relative;border-radius:3px;margin:20px 0px 0px 2px;}
+.b_right .yiyu{width:230px;height:120px;position:absolute;right:20px;bottom:50px;color:#F7B0B0;line-height:25px;
+    font-size:16px;font-family:"宋体";font-weight:500;}
 
-.index .carousel{background:rgba(0,0,0,.4);}
-.index .carousel img{height:500px;}
-
-.index  .carousel-control {  height: 80px; font-size: 120px; text-shadow: 0 1px 1px rgba(0,0,0,.4); background-color: transparent; border: 0;z-index: 10;}
-.index  .carousel img{height:500px;}
-/*enter-index页面*/
 .enter-index-header{  background:url(../images/top.jpg); }
 .enter-index-header .login{position:absolute;right:40px;top:10px;z-index:1031;}
 .enter-index-header .login a{padding-left:20px;}
@@ -213,3 +227,4 @@ a{text-decoration:none;color:#333;}
 .showessay .info-content .cmt-con{margin-left:18px;width:490px;}
 .showessay .info-content .cmt-con .name{text-decoration:underline;}
 .showessay .info-content .cmt-con p{margin-bottom:10px;}
+
