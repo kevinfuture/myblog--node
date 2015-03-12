@@ -14,21 +14,24 @@
             width:100%;
         }
     </style>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-<form class="form-horizontal" action="/Essay/newessay" method="post">
-    <FIELDSET>
-        <LEGEND>随笔</LEGEND>
+<div id="new-arctical">
+    <form class="form-horizontal" action="/Essay/newessay" method="post">
+        <FIELDSET>
+            <LEGEND>随笔</LEGEND>
+            <p class="W_swficon ficon_swtxt"><img src="/images/shareword.png"></p>
             <div>
-                <div class="control-group">
-                    <label class="control-label" for="caption">标题</label>
-                    <div class="controls">
+                <div class="control-group ">
+                    <label class="control-label l " for="caption">标题</label>
+                    <div class="controls " style="margin-left:50px;">
                         <input type="text" class="input-xlarge" id="caption" name="caption" value="<%=essay==null?null:essay.caption%>">
                         <input type="hidden" class="input-xlarge" id="essay_id" name="essay_id" value="<%=essay==null?null:essay._id%>">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="username">内容</label>
+                    <label class="control-label" for="username" style="display:block;padding:6px 0;">内容</label>
                     <div class="controls">
                         <input type="hidden" id="essaycontent" name="essaycontent" value="<%=essay==null?null:essay.content%>"/>
                         <script id="editor" type="text/plain" style="width:1024px;height:500px;" name="content"></script>
@@ -37,16 +40,16 @@
             </div>
             <div id="btns">
                 <!--<div>-->
-                    <!--<button onclick="getAllHtml()">获得整个html的内容</button>-->
-                    <!--<button onclick="getContent()">获得内容</button>-->
-                    <!--<button onclick="setContent()">写入内容</button>-->
-                    <!--<button onclick="setContent(true)">追加内容</button>-->
-                    <!--<button onclick="getContentTxt()">获得纯文本</button>-->
-                    <!--<button onclick="getPlainTxt()">获得带格式的纯文本</button>-->
-                    <!--<button onclick="hasContent()">判断是否有内容</button>-->
-                    <!--<button onclick="setFocus()">使编辑器获得焦点</button>-->
-                    <!--<button onmousedown="isFocus(event)">编辑器是否获得焦点</button>-->
-                    <!--<button onmousedown="setblur(event)" >编辑器失去焦点</button>-->
+                <!--<button onclick="getAllHtml()">获得整个html的内容</button>-->
+                <!--<button onclick="getContent()">获得内容</button>-->
+                <!--<button onclick="setContent()">写入内容</button>-->
+                <!--<button onclick="setContent(true)">追加内容</button>-->
+                <!--<button onclick="getContentTxt()">获得纯文本</button>-->
+                <!--<button onclick="getPlainTxt()">获得带格式的纯文本</button>-->
+                <!--<button onclick="hasContent()">判断是否有内容</button>-->
+                <!--<button onclick="setFocus()">使编辑器获得焦点</button>-->
+                <!--<button onmousedown="isFocus(event)">编辑器是否获得焦点</button>-->
+                <!--<button onmousedown="setblur(event)" >编辑器失去焦点</button>-->
                 <!--</div>-->
                 <div>
                     <button onclick="getText()">获得当前选中的文本</button>
@@ -64,11 +67,13 @@
                 <button onclick="deleteEditor()">
                     删除编辑器</button>
             </div>
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary">提交</button>
-        </div>
-    </FIELDSET>
-</form>
+            <div class="form-actions  ">
+                <button type="submit" class="btn btn-primary r sure">提交</button>
+            </div>
+        </FIELDSET>
+    </form>
+</div>
+
 <script type="text/javascript">
 
     //实例化编辑器
