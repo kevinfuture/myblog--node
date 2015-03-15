@@ -1,0 +1,9 @@
+*.db
+*.codekit
+*.swp
+*.orig
+*~
+*.tmp
+*.swp
+*.log
+.idea/*

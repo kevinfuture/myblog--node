@@ -1,0 +1,52 @@
+<% include header.ejs %>
+<div id="enter-index">
+    <div class="wrapper">
+        <div class="blog-status r"> 随笔- <%=essaycount%>  总评论- <%=commmentcount%> </div>
+            <div class="clearfix">
+                <div class="l main-banner">
+                    <div class="banner-item">
+                        <h3>公告</h3>
+                        <div class="banner-item-notice">
+                            <p> 昵称：<%= user.name %></p>
+                            <p> 园龄：<%=user.baseObj[0].Date%></p>
+                            <p> 关注：0（写死了）</p>
+                            <p> +加关注（写死了）</p>
+                        </div>
+                        <div class="mycalender"> </div>
+                    </div>
+                    <div class="banner-item">
+                        <h3>最近的10条评论</h3>
+                        <% if(newcommentlist){%>
+                        <%newcommentlist.forEach(function(value,index,array){%>
+                        <div class="new-comment">
+                            <div class="new-comment-item">
+                                <p>评论人：<%=array[index].commentUser%></p>
+                                <p>评论标题：<a href="/Essay/showessay/<%=array[index]._id%>"><%=array[index].caption%></a></p>
+                            </div>
+                        </div>
+                        <%});%>
+                        <% }%>
+                    </div>
+                </div>
+                <div class="l main-content">
+                    <% if(essaylist){%>
+                        <%essaylist.forEach(function(value,index,array){%>
+                        <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
+                        <div class="item">
+                            <h2><a href="/Essay/showessay/<%=array[index]._id%>"><%=array[index].caption%></a></h2>
+                            <p>摘要:<%=array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
+                            <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span>0(写死了)</span>)<a href="/Essay/newessay/<%=array[index]._id%>">编辑</a> </p>
+                        </div>
+                        <%});%>
+                    <% }%>
+                </div>
+            </div>
+        <div class="clearfix">
+            <div class="page r"><a href="javascript:;">下一页</a></div>
+        </div>
+        <div class="clearfix copy-right">
+            Copyright ©2015 <%=user.name%>
+        </div>
+    </div>
+<% include footer.ejs %>
+

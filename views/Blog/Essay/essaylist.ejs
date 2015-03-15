@@ -1,0 +1,90 @@
+<% include ../../header.ejs %>
+<div id="essaylist" class="l-r">
+    <div class="clearfix">
+        <div class="left-main l">
+            <div class="left-essay-wrapper">
+
+                <h1><%= title %></h1>
+
+                <p class="title">Welcome to <%= title %></p>
+                <% if(essaylist){%>
+                <%essaylist.forEach(function(value,index,array){%>
+                <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
+                <div class="item">
+                    <h2><a href="/Essay/newessay/<%=array[index]._id%>"><%=array[index].caption%></a></h2>
+                    <p>摘要:<%=array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
+                    <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%>  作者：<%=array[index].username%> 阅读 (<span> <%=array[index].browsercount%> </span>) 评论 (<span> 0(写死了) </span>)<a href="/Essay/newessay/<%=array[index]._id%>"> 编辑 </a> </p>
+                </div>
+                <%});%>
+                <% }%>
+            </div>
+        </div>
+        <div class="right-inner l ">
+            <div class="widget-list">
+                <div class="media">
+                    <a href="/avatar" class="fn-posi-re user-infor-head">
+                        <img id="J-user-infor-head" class="media-object img-rounded" src="/images/nopic.jpg" />
+                        <span class="user-infor-replace fn-posi-ab">更换头像</span>
+                    </a>
+                    <div class="user-infor-sign">
+                        <h4 class="user-infor-name">
+                            <span class="pull-right sidebar-message" title="消息中心"><a href="/message"><i class="icon-envelope fn-mt3"></i></a></span>
+                            <a href="/user/xyx"><i class="theCurrentName">xyx</i></a>
+                        </h4>
+                        <p class="theCurrentSign">这家伙很懒，还没有签名</p>
+                        <p>粉丝：<span class="badge badge-important">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微博：<a href="/mine"><span class="badge badge-info" id="J-userInfor-topicCount">1</span></a></p>
+                        <p>金币：<span class="badge">41</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-list">
+                <h5 class="widget-head"><i class="icon-heart"></i> 我关注的人<span>(0)</span></h5>
+
+            </div>
+            <div class="widget-list">
+                <h5 class="widget-head"><i class="icon-fire"></i> 最热话题 | Hot</h5>
+                <div class="media-body">
+                    <ul class="widget-category">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="widget-list">
+                <h5 class="widget-head"><i class="icon-star"></i> 微博之星 | Star</h5>
+
+                <div class="list-users">
+                    <ul class="clearfix">
+
+
+                        <li>
+                            <a href='/user/xyx' title="xyx， 1个微博"><img class="media-object img-rounded" src="/images/nopic.jpg" /></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="widget-list">
+                <h5 class="widget-head"><i class="icon-leaf"></i> 最新加入 | New</h5>
+
+                <div class="list-users">
+                    <ul class="clearfix">
+
+
+                        <li>
+                            <a href='/user/xyx' title="xyx"><img class="media-object" src="/images/nopic.jpg" />
+                                <span>xyx</span></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<% include ../../footer.ejs %>
