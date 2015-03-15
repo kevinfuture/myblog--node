@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="stylesheets/bootstrap-responsive.css" rel="stylesheet">
+    <script src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.SuperSlide.2.1.1.js"></script>
+
+    <script src="/javascripts/public.js"></script>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">Kevin's blog</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <% if (!user) { %>
+                    <li><a href="/login">登入</a></li>
+                    <li><a href="/reg">注册</a></li>
+                    <% } else { %>
+                    <li class="wel-join" >欢迎你,<%= user.name%></li>
+
+                    <li><a href="/<%=user.name%>" target="_blank">我的博客</a></li>
+                    <li id="base-msg"><a  href="javascript:;">设置<i class="caret "></i></a>
+                        <div class="hide">
+                            <ul>
+                                <li><a href="/users">基本资料</a></li>
+                                <li><a href="javascript:;">修改头像(还没有做)</a></li>
+                                <li><a href="/confirmsecret">修改密码</a></li>
+                                <li class="line"></li>
+                                <li><a href="/logout">登出</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <% } %>
+                </ul>
+                <script>
+
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="container" class="container">
+    <div id="infocue">
+        <% if (success) { %>
+        <div class="alert alert-success">
+            <%= success %></div>
+        <% } %>
+        <% if (error) { %>
+        <div class="alert alert-error">
+            <%= error %></div>
+<% } %>

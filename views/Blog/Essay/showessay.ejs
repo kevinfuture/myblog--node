@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= essay.username %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.js"> </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var getcontent = $('#essaycontent');
+            var getessay = $('#showessay');
+            getessay.html(getcontent.val());
+        })
+    </script>
+</head>
+<body>
+<div  class="showessay clearfix">
+    <div class="left-main l">
+        <div class="left-essay-wrapper">
+            <h1><%= essay.username %>的博客</h1>
+            <p class="title"><%= essay.caption %></p>
+            <input type="hidden" id="essaycontent" name="essaycontent" value="<%=essay.content%>"/>
+            <span></span>
+            <p id="showessay"></p>
+            <div class="newBlog-bom-opration clearfix">
+                <!-- Baidu Button BEGIN -->
+                <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                    <span class="bds_more" style="padding-top:4px;float:left">分享到：</span>
+                    <a class="bds_isohu" style="margin-left:0px;" title="分享到我的搜狐" href="#"></a>
+                    <a class="bds_tsina" style="margin-left:0px;" title="分享到新浪微博" href="#"></a>
+                    <a class="bds_qzone" style="margin-left:0px;" title="分享到QQ空间" href="#"></a>
+                </div>
+                <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=396125"></script>
+
+                <script type="text/javascript">
+                    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                </script>
+                <!-- Baidu Button END -->
+            </div>
+            <% if(comment){%>
+            <%comment.forEach(function(value,index,array){%>
+            <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
+            <div class="item">
+                <h2>日期：<%=array[index].baseObj[0].Date%>来自用户：<%=array[index].commentUser%></h2>
+                <p>评论<%=array[index].commentContent%></p>
+                <%if(array[index].commentUser==user.name){%>
+                <p class="con-msg"><a href="/Essay/comment/<%=array[index]._id%>">修改</a><a href="/<%array[index]._id%>">删除(暂时不做)</a></p>
+                <%}%>
+            </div>
+            <%});%>
+            <% }%>
+            <form class="form-horizontal" method="post" action="/Essay/comment/">
+                <fieldset>
+                    <legend><%=user.name%></legend>
+                    <div class="control-group">
+                        <label class="control-label" for="commentContent">评论</label>
+                        <div class="controls">
+                            <textarea type="text" class="input-xlarge" id="commentContent" name="commentContent" value="<%=commentContent%>"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions r">
+                        <button type="submit" class="btn btn-primary">提交评论</button>
+                    </div>
+                </fieldset>
+            </form>
+            <div class="comment-list">
+                <div class="info-content clearfix">
+                    <div class="cmt-icon l">
+                        <img src="/images/11111.gif">
+                    </div>
+                    <div class="cmt-con l">
+                        <p class="cmt-name">
+                            <span class="name">乐乐</span>
+                           <span class="time r">10:50</span>
+                        </p>
+                        <p class="cmt-word">
+                           <span class="content" >眼睛不要红,学会自己干才是正道.</span>
+                           <span class="r">回复</span>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="comment-list">
+                <div class="info-content clearfix">
+                    <div class="cmt-icon l">
+                        <img src="/images/11111.gif">
+                    </div>
+                    <div class="cmt-con l">
+                        <p class="cmt-name">
+                            <span class="name">乐乐</span>
+                            <span class="time r">10:50</span>
+                        </p>
+                        <p class="cmt-word">
+                            <span class="content" >眼睛不要红,学会自己干才是正道.</span>
+                            <span class="r">回复</span>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="comment-list">
+                <div class="info-content clearfix">
+                    <div class="cmt-icon l">
+                        <img src="/images/11111.gif">
+                    </div>
+                    <div class="cmt-con l">
+                        <p class="cmt-name">
+                            <span class="name">乐乐</span>
+                            <span class="time r">10:50</span>
+                        </p>
+                        <p class="cmt-word">
+                            <span class="content" >眼睛不要红,学会自己干才是正道.</span>
+                            <span class="r">回复</span>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="right-inner l">
+        <div class="widget-list">
+            <div class="media">
+                <a href="/avatar" class="fn-posi-re user-infor-head">
+                    <img id="J-user-infor-head" class="media-object img-rounded" src="/images/nopic.jpg" />
+                    <span class="user-infor-replace fn-posi-ab">更换头像</span>
+                </a>
+                <div class="user-infor-sign">
+                    <h4 class="user-infor-name">
+                        <span class="pull-right sidebar-message" title="消息中心"><a href="/message"><i class="icon-envelope fn-mt3"></i></a></span>
+                        <a href="/user/xyx"><i class="theCurrentName">xyx</i></a>
+                    </h4>
+                    <p class="theCurrentSign">这家伙很懒，还没有签名</p>
+                    <p>粉丝：<span class="badge badge-important">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微博：<a href="/mine"><span class="badge badge-info" id="J-userInfor-topicCount">1</span></a></p>
+                    <p>金币：<span class="badge">41</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget-list">
+            <h5 class="widget-head"><i class="icon-heart"></i> 我关注的人<span>(0)</span></h5>
+
+        </div>
+        <div class="widget-list">
+            <h5 class="widget-head"><i class="icon-fire"></i> 最热话题 | Hot</h5>
+            <div class="media-body">
+                <ul class="widget-category">
+
+                </ul>
+            </div>
+        </div>
+        <div class="widget-list">
+            <h5 class="widget-head"><i class="icon-star"></i> 微博之星 | Star</h5>
+
+            <div class="list-users">
+                <ul class="clearfix">
+
+
+                    <li>
+                        <a href='/user/xyx' title="xyx， 1个微博"><img class="media-object img-rounded" src="/images/nopic.jpg" /></a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div class="widget-list">
+            <h5 class="widget-head"><i class="icon-leaf"></i> 最新加入 | New</h5>
+
+            <div class="list-users">
+                <ul class="clearfix">
+
+
+                    <li>
+                        <a href='/user/xyx' title="xyx"><img class="media-object" src="/images/nopic.jpg" />
+                            <span>xyx</span></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

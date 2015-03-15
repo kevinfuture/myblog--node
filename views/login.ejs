@@ -1,0 +1,28 @@
+<% include header.ejs %>
+<div class="login-wrap">
+    <div id="login">
+        <form class="form-horizontal" method="post">
+            <fieldset>
+                <legend></legend>
+                <div class="control-group">
+                    <!--<label class="control-label" for="username">用户名</label>-->
+                    <!--<div class="controls">-->
+                    <input type="text" class="input-xlarge" id="username" placeholder="用户名" name="username">
+                    <!--</div>-->
+                </div>
+                <div class="control-group">
+                    <!--<label class="control-label" for="password">口令</label>-->
+                    <!--<div class="controls">-->
+                    <input type="password" class="input-xlarge" id="password" placehoder="密码" name="password">
+                    <!--</div>-->
+                </div>
+                <!--<div class="form-actions">-->
+                 <button type="submit" class="btn btn-primary">登入</button>
+                <a href="javascript:;" class="reg-btn">立即注册</a>
+                <!--</div>-->
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<% include footer.ejs %>
