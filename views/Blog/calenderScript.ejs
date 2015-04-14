@@ -101,27 +101,56 @@
 
             var aCalDate = $('.calender ul a');
             var oTit = $('.calender .title em');
+            var year =  oTit.eq(0).html();
+            var mon =  oTit.eq(1).html();
             for(var i=0;i<aCalDate.length;i++){
-                var year =  oTit.eq(0).html();
-                var mon =  oTit.eq(1).html();
                 var date =  aCalDate.eq(i).html();
-                aCalDate.eq(i).attr('href','/'+<%=user.name%>+'/?'+mon+'/'+date+'/'+year);
-                //aCalDate.eq(i).attr('href','/'+=user.name+'/?'+mon+'/'+date+'/'+year);这里必须对href后边的第一个‘/’加上，因为不加的话，会博仁吧后边的
+                aCalDate.eq(i).attr('href','/'+<%=user.name%>+'/?calenderdate='+mon+'/'+date+'/'+year);
+                //aCalDate.eq(i).attr('href','/'+=user.name+'/?'+mon+'/'+date+'/'+year);这里必须对href后边的第一个‘/’加上，因为不加的话，会把后边的
                 //第一个参数作为了host也就是localhost：3000
             }
         }
 
 
     });
-//    $(function(){//这里是@kevinfuture添加的分页的测试脚本
-//
-////分页功能
-//        var options = {
-//            currentPage:2,
-//            totalPages:5,
-//            numberOfPages:5
-//        }
-//        $('#page1').bootstrapPaginator(options);
-//
-//    })
+    //********注意：这里生意@kevinfuture写的分页的脚本********
+    $(document).ready(function() {
+        if($("#pagination")){
+            var pagecount = <%= essaycount %>;
+            var pagesize = 10;
+            var currentpage = <%= currentpages %>;
+//            var pagecount =39;
+//            var pagesize = 13;
+//            var currentpage = 2;
+            var counts,pagehtml="";
+            var length = pagecount/pagesize;
+            if(pagecount%pagesize==0){
+                counts = parseInt(pagecount/pagesize);
+            }else{
+                counts = parseInt(pagecount/pagesize)+1;
+            }
+            //只有一页内容
+            if(pagecount<=pagesize){pagehtml="";}
+            //大于一页内容
+            if(pagecount>pagesize){
+                if(currentpage!=1){
+                    pagehtml+= '<li><a href="/<%=user.name%>/?calenderdate=<%=calenderdate%>&page='+(currentpage-1)+'">上一页</a></li>';
+                }
+                for(var i=0;i<counts;i++){
+                    if(i>=(currentpage-(length+1)) && i<(currentpage+(length-1))){
+                        if(i==currentpage-1){
+                            pagehtml+= '<li class="active"><a href="/<%=user.name%>/?calenderdate=<%=calenderdate%>&page='+(i+1)+'">'+(i+1)+'</a></li>';
+                        }else{
+                            pagehtml+= '<li><a href="/<%=user.name%>/?page='+(i+1)+'">'+(i+1)+'</a></li>';
+                        }
+
+                    }
+                }
+                if(currentpage<counts){
+                    pagehtml+= '<li><a href="/<%=user.name%>/?calenderdate=<%=calenderdate%>&page='+(currentpage+1)+'">下一页</a></li>';
+                }
+            }
+            $("#pagination").html(pagehtml);
+        }
+    });
 </script>
