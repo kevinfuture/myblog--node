@@ -30,8 +30,8 @@ a{text-decoration:none;color:#333;}
 .navbar .brand {text-shadow:none;color:#ddd;margin-left:100px;}
 .navbar .brand:hover{text-decoration:underline;color:#ddd;}
 .navbar .nav{position:relative;margin-right:200px;}
-.navbar .nav>li.wel-join{position: relative;top: 10px;left: -10px;}
-.navbar .nav > li > a{text-shadow:none;color:#ddd;}
+.navbar .nav>li.wel-join{position: relative;top: 10px;left: -10px;color:#FAe171;}
+.navbar .nav > li > a{text-shadow:none;color:#FAe171;}
 .navbar .nav > li > a:hover{text-decoration:underline;color:#ddd;}
 .navbar .nav .caret{border-top-color:#ddd;margin: 8px 4px 0 6px;}
 .navbar-inner a{color:#ddd;text-shadow:none}
