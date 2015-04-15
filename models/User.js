@@ -12,6 +12,7 @@ var UserSchema = new Schema({
     tel:String,
     email:String,
     age:String,
+    headPic:String,
     baseObj:{type:Array,default:baseObject.BaseObject.call(this)}
 });
 UserSchema.methods.find = function (username, callback) {

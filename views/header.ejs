@@ -6,6 +6,22 @@
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href="stylesheets/bootstrap-responsive.css" rel="stylesheet">
+    <script type="text/javascript" src="/javascripts/duck.js"></script>
+    <script type="text/javascript">
+        duckJS.config({
+            alias : {
+//                'jquery' : '/javascripts/jquery.js',
+                'bootstrap' : '/javascripts/bootstrap.js',
+                'alertify' : '/javascripts/alertify.min.js',
+                'alertify-core' : '/stylesheets/alertify/alertify.core.css',
+                'alertify-default' : '/stylesheets/alertify/alertify.default.css',
+                'common' : '/javascripts/common.js'
+            }
+        });
+
+        duckJS.use(['alertify-core', 'alertify-default']);
+        duckJS.use('bootstrap');
+    </script>
     <script src="/javascripts/jquery.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.SuperSlide.2.1.1.js"></script>
 
@@ -27,7 +43,7 @@
                     <li><a href="/login">登入</a></li>
                     <li><a href="/reg">注册</a></li>
                     <% } else { %>
-                    <li class="wel-join" >欢迎你,<%= user.name%></li>
+                    <li class="wel-join" >欢迎你,<span class="theCurrentName label label-success"><%= user.name%></span></li>
 
                     <li><a href="/<%=user.name%>" target="_blank">我的博客</a></li>
                     <li id="base-msg"><a  href="javascript:;">设置<i class="caret "></i></a>

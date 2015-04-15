@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 //引入模块
 var ueditor = require("ueditor");
 var moment = require('moment');
+var multiparty=require('connect-multiparty');
 //引入eventproxy模块用来解决异步嵌套回调问题
 var EventProxy = require('eventproxy');//还没有使用
 
@@ -20,6 +21,8 @@ var MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+//上传头像
+var changephoto = require('./routes/changephoto');
 var reg = require('./routes/reg');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
@@ -56,6 +59,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
+app.use(multiparty({ uploadDir: './public/images/headPic' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());//app.use(express.cookieParser()); 3.x
@@ -92,6 +96,9 @@ app.use(function(req, res, next){
 app.use('/', routes);
 app.get('/users',users);
 app.post('/users',users);
+//上传头像
+app.get('/changephoto',changephoto);
+app.post('/changephoto',changephoto);
 app.get('/reg',reg);
 app.post('/reg',reg);
 app.get('/login',login);

@@ -4,56 +4,47 @@
     <%='开园时间：'+user.baseObj[0].Date+'密码：'+user.password%>
 </div>
 <div class="hero-unit clearfix">
-    <form class="form-horizontal base-msg l b" method="post">
-        <h1>基本资料</h1>
-        <hr/>
-        <FIELDSET>
-            <LEGEND>个人中心</LEGEND>
-            <div class="control-group">
-                <label class="control-label" for="username">昵称</label>
-                <div class="controls">
-                    <input type="text" class="input-xlarge" id="username" name="username" value="<%= user.name%>" readonly="true">
+    <!--这里是更换头像的页面-->
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <h3 class="titleBar">上传真像</h3>
+                <div class="coninner">
+                    <form name="avatarForm" enctype="multipart/form-data"  target="hideUpload" class="form-horizontal fn-mt20" method="post">
+                        <div class="control-group">
+                            <div class="controls"><img class="previewImg" src="<% if(user.headPic){ %><%= user.headPic %><% }else{ %>/images/nopic.jpg<% } %>"></div>
+                        </div>
+                        <div class="control-group">
+                            <label for="J-headPic" class="control-label">URL：</label>
+                            <div class="controls">
+                                <input type="file" id="J-headPic" name="headPic">
+                                <div class=""><i class="icon-exclamation-sign"></i>上传200K以内180x180高清无码照，接受gif|jpg|png格式。</div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <input id="J-save-avatar" class="btn btn-large btn-primary" type="submit" value="保 存">
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="age">年龄</label>
-                <div class="controls">
-                    <input type="text" class="input-xlarge" id="age" name="age" value="<%= user.age%>">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="tel">手机号</label>
-                <div class="controls">
-                    <input type="text" class="input-xlarge" id="tel" name="tel"  value="<%= user.tel%>">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="email">邮箱</label>
-                <div class="controls">
-                    <input type="text" class="input-xlarge" id="email" name="email" value="<%= user.email%>">
-                </div>
-            </div>
-            <hr/>
-<!--<div class="form-actions">-->
-<div class='action-btn'>
-    <button type="submit" class="btn btn-primary">提交</button>
-    <a class="sure-secret" href="/confirmsecret">修改密码</a>
-</div>
 
-<!--</div>-->
-</FIELDSET>
-</form>
+        </div>
+    </div>
+    <iframe name="hideUpload" src="" class="hide"></iframe>
+    <!--这里是更换头像的页面-->
     <div class="right-inner l ">
         <div class="widget-list">
             <div class="media">
                 <%if(user){%>
                 <a href="/changephoto" class="fn-posi-re user-infor-head">
-                    <img id="J-user-infor-head" class="media-object img-rounded" src=<%=user.headPic%> />
+                    <img id="J-user-infor-head" class="media-object img-rounded" src=<%=user.headPic%>  />
                     <span class="user-infor-replace fn-posi-ab">更换头像</span>
                 </a>
                 <%}else{%>
-                <img id="J-user-infor-head" class="media-object img-rounded" src="/images/nopic.jpg" />
-                <span class="user-infor-replace fn-posi-ab">更换头像</span>
+                <a href="/changephoto" class="fn-posi-re user-infor-head">
+                    <img id="J-user-infor-head" class="media-object img-rounded" src="/images/y.jpg" />
+                    <span class="user-infor-replace fn-posi-ab">更换头像</span>
+                </a>
                 <%}%>
                 <div class="user-infor-sign">
                     <h4 class="user-infor-name">
@@ -81,7 +72,7 @@
             </div>
         </div>
         <div class="widget-list">
-            <h5 class="widget-head"><i class="icon-star"></i> 微博之星 | Star(这里跟下边要进行一次查询：按照微博数量，跟最新加入时间的人查出3个来)</h5>
+            <h5 class="widget-head"><i class="icon-star"></i> 微博之星 | Star</h5>
 
             <div class="list-users">
                 <ul class="clearfix">
@@ -114,5 +105,17 @@
     </div>
 </div>
 <% } %>
-
+<!--没有用到，alert的显示，很漂亮&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+    <!--var uploadNotice;-->
+    <!--D.use(['jquery', 'alertify'], function($, alertify){-->
+<!--//        $(function(){-->
+        <!--uploadNotice = function(rec){-->
+            <!--alertify.alert(rec.data);-->
+            <!--if(rec.success){-->
+                <!--$('.previewImg, #J-user-infor-head').attr('src', rec.img +'?'+ new Date().getTime());-->
+            <!--}-->
+        <!--}-->
+<!--//        });-->
+    <!--});-->
+<!--</script>-->
 <% include footer.ejs %>
