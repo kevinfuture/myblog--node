@@ -46,19 +46,21 @@
     <div class="right-inner l ">
         <div class="widget-list">
             <div class="media">
-                <%if(user){%>
+                <%if(user.headPic){%>
                 <a href="/changephoto" class="fn-posi-re user-infor-head">
                     <img id="J-user-infor-head" class="media-object img-rounded" src=<%=user.headPic%> />
                     <span class="user-infor-replace fn-posi-ab">更换头像</span>
                 </a>
                 <%}else{%>
-                <img id="J-user-infor-head" class="media-object img-rounded" src="/images/nopic.jpg" />
-                <span class="user-infor-replace fn-posi-ab">更换头像</span>
+                <a href="/changephoto" class="fn-posi-re user-infor-head">
+                    <img id="J-user-infor-head" class="media-object img-rounded" src="/images/nopic.jpg" />
+                    <span class="user-infor-replace fn-posi-ab">更换头像</span>
+                </a>
                 <%}%>
                 <div class="user-infor-sign">
                     <h4 class="user-infor-name">
                         <span class="pull-right sidebar-message" title="消息中心"><a href="/message"><i class="icon-envelope fn-mt3"></i></a></span>
-                        <a href="/user/xyx"><i class="theCurrentName">xyx</i></a>
+                        <a href="/<%=user.name%>"><i class="theCurrentName"><%=user.name%></i></a>
                     </h4>
                     <p class="theCurrentSign">这家伙很懒，还没有签名</p>
                     <p>粉丝：<span class="badge badge-important">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微博：<a href="/mine"><span class="badge badge-info" id="J-userInfor-topicCount">1</span></a></p>
@@ -114,5 +116,17 @@
     </div>
 </div>
 <% } %>
-
+<script type="text/javascript">
+    var uploadNotice;
+    D.use(['jquery', 'alertify'], function($, alertify){
+//        $(function(){
+        uploadNotice = function(rec){
+            alertify.alert(rec.data);
+            if(rec.success){
+                $('.previewImg, #J-user-infor-head').attr('src', rec.img +'?'+ new Date().getTime());
+            }
+        }
+//        });
+    });
+</script>
 <% include footer.ejs %>

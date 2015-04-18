@@ -25,9 +25,11 @@ router.get('/changephoto', function(req, res) {
 });
 router.post('/changephoto', isLogin.checkLogin);
 router.post('/changephoto', function(req, res, next) {
+    console.log('#######'+req.files.headPic);
+    console.log('*************'+req.body.headPic);
     var pic = req.files.headPic,
         temtype,
-        mat = pic.type.match(/(gif|jpeg|png)/g),
+        mat = pic.type.match(/(gif|jpeg|png|jpg)/g),
         originalpath = pic.path,
         newpath = setting.uploadDir+'headPic'+req.session.user.name+'.';
     var ImageType = {
