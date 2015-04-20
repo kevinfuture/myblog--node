@@ -5,6 +5,7 @@ var url= require('url');
 var moment = require('moment');
 var User = require('../../models/User.js');
 var EssayPost = require('../../models/EssayPost');
+var Comment = require('../../models/Comment');
 
 /* GET home page. */
 //router.get('/:users?/:calenderdate?/:page?', function(req, res, next) {

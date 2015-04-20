@@ -13,6 +13,7 @@ var EssayPostSchema = new Schema({
     content:String,
     TDate:String,
     browsercount:{type:Number,default:0},
+    commentcount:{type:Number,default:0},
     baseObj:{type:Array,default:baseObject.BaseObject.call(this)}
 });
 //EssayPostSchema.methods.find = function (_id, callback) {
