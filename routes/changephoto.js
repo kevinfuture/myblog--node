@@ -34,7 +34,7 @@ router.post('/changephoto', function(req, res, next) {
     var ImageType = {
         'jpeg':'jpg',
         'jpg':'jpg',
-        'gif':'gif',
+        'gif':'gif', 
         'png':'png'
     };
     if(pic.size==0){
