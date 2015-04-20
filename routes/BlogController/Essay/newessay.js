@@ -49,13 +49,15 @@ router.post('/Essay/newessay', function(req, res, next) {
                                         return res.redirect('/Essay/newessay');
                                     }
                                     req.flash('success', '创建新随笔成功！！！');
-                                    res.render('Blog/index', {
-                                        user: user,
-                                        essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
-                                        essaylist: essaylist,//文章的对象
-                                        newcommentlist: newcommentlist,
-                                        commmentcount: commmentcount
-                                    });
+                                    //return res.render('Blog/index', {
+                                    //    user: user,
+                                    //    essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
+                                    //    essaylist: essaylist,//文章的对象
+                                    //    newcommentlist: newcommentlist,
+                                    //    commmentcount: commmentcount,
+                                    //    currentpages:1
+                                    //});用下边的替换
+                                    res.redirect('/'+user.name);
                                 });
                             } else {
                                 mongoose.model('EssayPost').findOneAndUpdate({
@@ -74,13 +76,15 @@ router.post('/Essay/newessay', function(req, res, next) {
                                             content: essay == null ? null : essay.content
                                         });
                                     }
-                                    return res.render('Blog/index', {
-                                        user: user,
-                                        essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
-                                        essaylist: essaylist,//文章的对象
-                                        newcommentlist: newcommentlist,
-                                        commmentcount: commmentcount
-                                    });
+                                    //return res.render('Blog/index', {
+                                    //    user: user,
+                                    //    essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
+                                    //    essaylist: essaylist,//文章的对象
+                                    //    newcommentlist: newcommentlist,
+                                    //    commmentcount: commmentcount,
+                                    //    currentpages:1
+                                    //});用下边的替换
+                                    res.redirect('/'+user.name);
                                 });
                             }
                         });

@@ -9,10 +9,10 @@
                 <p class="title">Welcome to <%= title %></p>
                 <% if(essaylist){%>
                 <%essaylist.forEach(function(value,index,array){%>
-                <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
+                <input type="hidden"id="caption" name="caption" value="<%=array[index].caption==null?'无':array[index].caption%>">
                 <div class="item">
                     <h2><a href="/Essay/newessay/<%=array[index]._id%>"><%=array[index].caption%></a></h2>
-                    <p>摘要:<%=array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
+                    <p>摘要:<%=array[index].content==null?'无':array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
                     <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%>  作者：<%=array[index].username%> 阅读 (<span> <%=array[index].browsercount%> </span>) 评论 (<span> 0(写死了) </span>)<a href="/Essay/newessay/<%=array[index]._id%>"> 编辑 </a> </p>
                 </div>
                 <%});%>
@@ -22,10 +22,17 @@
         <div class="right-inner l ">
             <div class="widget-list">
                 <div class="media">
-                    <a href="/avatar" class="fn-posi-re user-infor-head">
+                    <%if(user.headPic){%>
+                    <a href="/changephoto" class="fn-posi-re user-infor-head">
+                        <img id="J-user-infor-head" class="media-object img-rounded" src=<%=user.headPic%>  />
+                        <span class="user-infor-replace fn-posi-ab">更换头像</span>
+                    </a>
+                    <%}else{%>
+                    <a href="/changephoto" class="fn-posi-re user-infor-head">
                         <img id="J-user-infor-head" class="media-object img-rounded" src="/images/nopic.jpg" />
                         <span class="user-infor-replace fn-posi-ab">更换头像</span>
                     </a>
+                    <%}%>
                     <div class="user-infor-sign">
                         <h4 class="user-infor-name">
                             <span class="pull-right sidebar-message" title="消息中心"><a href="/message"><i class="icon-envelope fn-mt3"></i></a></span>

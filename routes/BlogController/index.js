@@ -13,7 +13,7 @@ router.get('/:users?', function(req, res, next) {
     //var name=splitname[0].split('/');
     var name=req.params.users;
     var calenderdate = req.query.calenderdate;
-    var page = req.query.page;
+    var page = req.query.page||1;
     console.log("*************calenderdate:"+calenderdate);
     console.log(page);
     mongoose.model('User').findOne({name:name},function(err,user) {
@@ -32,6 +32,7 @@ router.get('/:users?', function(req, res, next) {
                             newcommentlist.forEach(function (value, index, array) {
                                 array[index].baseObj[0].Date = moment(array[index].baseObj[0].Date).format('YYYY/MM/DD hh:mm a');
                             });
+                            req.session.calenderdate = calenderdate;
                             res.render('Blog/index', {
                                 user: user,
                                 essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
