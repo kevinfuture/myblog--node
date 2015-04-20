@@ -3,6 +3,7 @@
 <head>
     <title><%= essay.username %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.js"> </script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -53,7 +54,7 @@
                 <fieldset>
                     <legend><%=user.name%></legend>
                     <div class="control-group">
-                        <label class="control-label" for="commentContent">评论</label>
+                        <label class="control-label comment1" for="commentContent">评论</label>
                         <div class="controls">
                             <textarea type="text" class="input-xlarge" id="commentContent" name="commentContent" value="<%=commentContent%>"></textarea>
                         </div>

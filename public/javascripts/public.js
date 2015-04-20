@@ -44,7 +44,7 @@ $(function(){
       clearInterval(timer);
     });
     $('.bd').mouseout(function(){
-        timer = setInterval(bb,1000);
+        timer = setInterval(bb,2000);
     });
-    timer = setInterval(bb,1000);
+    timer = setInterval(bb,2000);
 })
