@@ -3,21 +3,13 @@
  */
 $(function(){
     $(".nav #base-msg").click(function(){
-        $('.nav #base-msg .hide').show();
+        $('.nav #base-msg .hide').toggle();
     });
 });
 $(function(){
     var iNow = 0;
 
     var timer = null;
-    //for(var i=0; i<$('.hd li').length; i++){
-    //    (function(index){
-    //        $('.hd li').eq(index).click(function(){
-    //            iNow = index;
-    //            jQuery(".b_left .hoverBg").animate({"margin-top":60*index+"px"},700);
-    //        });
-    //    })(i);
-    //}
     function bb(){
         if(iNow == $('.bd li').length-1){
             iNow = 0;
@@ -47,4 +39,16 @@ $(function(){
         timer = setInterval(bb,2000);
     });
     timer = setInterval(bb,2000);
-})
+});
+
+//// 正则表达式--用户名
+//var reg=/^[a-z0-9-]{6,10}$/;
+
+//// 正则表达式--密码
+//var reg=/^[a-z0-9]{6,10}$/;
+
+//// 正则表达式--手机号
+//var reg=/^1[3|5|8]\d{9}$/;
+
+//// 正则表达式--邮箱
+//var reg=/^\w+@[a-z0-9-]+(\.[a-z]{2,6}){1,2}$/;
