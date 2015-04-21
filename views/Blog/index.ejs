@@ -1,7 +1,7 @@
 <% include header.ejs %>
 <div id="enter-index">
     <div class="wrapper">
-        <div class="blog-status r"> 随笔- <%=essaycount%>  总评论- <%=commmentcount%> </div>
+        <div class="blog-status r"> 随笔- <%=essaycount%>  总评论- <%=commmentcount%> <h4><a href="/Follow/?followwhoname=<%=user.name%>"> +加关注</a></h4></div>
             <div class="clearfix">
                 <div class="l main-banner">
                     <div class="banner-item">
@@ -10,7 +10,7 @@
                             <p> 昵称：<%= user.name %></p>
                             <p> 园龄：<%=user.baseObj[0].Date%></p>
                             <p> 关注：0（写死了）</p>
-                            <p> +加关注（写死了）</p>
+                            <p> 粉丝：0（写死了）</p>
                         </div>
                         <div class="mycalender"> </div>
                     </div>

@@ -47,7 +47,8 @@ var photo= require('./routes/BlogController/Album/photo');
 
 //文件上传的控制层
 var uploadfile= require('./routes/BlogController/File/uploadfile');
-
+//关注路由
+var follow = require('./routes/BlogController/Follow/follow');
 
 var app = express();
 
@@ -94,6 +95,9 @@ app.use(function(req, res, next){
     next();
 });
 
+//这里是关注的路由*****************************非常重要
+follow(app);
+//必须放在routes前边，原因是用了app
 
 app.use('/', routes);
 app.get('/users',users);
@@ -113,7 +117,7 @@ app.post('/confirmsecret',confirmsecret);
 app.get('/modifysecret',modifysecret);
 app.post('/modifysecret',modifysecret);
 //跳转路由指向
-app.get('/skipmiddle',skipmiddle); 
+app.get('/skipmiddle',skipmiddle);
 //以下是博客园的路由指向
 //app.get('/:users?/:calenderdate?/:page?',blogindex);
 app.get('/:users?',blogindex);
@@ -130,6 +134,7 @@ app.get('/Album/photo',photo);
 
 //文件的路由指向
 app.get('/File/uploadfile',uploadfile);
+
 
 
 //ueditor的图片存放路径的路由代码
