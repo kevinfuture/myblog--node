@@ -87,6 +87,8 @@ app.use(function(req, res, next){
     res.locals.essay = req.session.essay;
     res.locals.calenderdate = req.session.calenderdate;
     res.locals.currentpage = req.session.currentpage;
+    res.locals.funscount = req.session.funscount;
+    res.locals.followcount = req.session.followcount;
     var error = req.flash('error');
     res.locals.error = error.length ? error : null;
 

@@ -18,6 +18,8 @@ router.get('/users', function(req, res) {
         res.render('users', {
             title: '个人中心',
             user : req.session.user,
+            funscount:req.session.funscount==null?0:req.session.funscount,
+            followcount:req.session.followcount==null?0:req.session.funscount,
             success : req.flash('success').toString(),
             error : req.flash('error').toString()
         });
