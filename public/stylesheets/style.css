@@ -83,14 +83,17 @@ a{text-decoration:none;color:#333;}
     font-size:16px;font-family:"宋体";font-weight:500;}
 
 .enter-index-header{
-    background:url(../images/77.jpg) no-repeat;background-size: 100% auto;
+    /*background:url(../images/77.jpg) no-repeat;*/
+    /*background-size: 100% auto;*/
     margin:0 auto;}
 .enter-index-header .login a{padding-left:20px;}
 .enter-index-header .content{width:1000px;margin:0 auto;padding-top:140px;}
 .enter-index-header nav ul{padding-top:45px;padding-left:20px;}
 .enter-index-header nav li{float:left;padding:10px 30px;font-size:16px;font-family:'microsoft yahei';}
 .enter-index-header nav a {color:#555;}
-#enter-index{padding-top:20px;   background:rgb(235,225,198) url(../images/77.jpg) no-repeat;background-size: 100% auto;background-position:0 -250px;color:#555; }
+#enter-index{padding-top:20px; background: url(../images/77.jpg) no-repeat;background-size: cover;
+    /*background-position:0 -250px;*/
+    color:#555; }
 
 #enter-index a{color:#555;}
 .wrapper{width:940px;margin:0 auto;}
