@@ -10,6 +10,7 @@ router.get('/Essay/comment/:_id?', function(req, res, next) {
             console.log('currentcomment:' + currentcomment);
             mongoose.model('EssayPost').findOne({username:currentcomment.username,caption:currentcomment.caption},function(err,essay) {
                 console.log('#####:' + essay);
+                req.session.essay = essay;
             mongoose.model('Comment').find({username:essay.username,caption:essay.caption},function(err,commentlist) {
                 console.log('******:' + commentlist);
                 commentlist.forEach(function(value,index,array){
@@ -46,7 +47,7 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
     { req.flash('error', '请登录后评论！！！');
         return res.redirect('/login');
     }
-    mongoose.model('EssayPost').find({username:essay.username,caption:essay.caption},function(err,thisessaycommentcount) {
+    mongoose.model('EssayPost').find({username:req.session.essay.username,caption:req.session.essay.caption},function(err,thisessaycommentcount) {
         mongoose.model('Comment').count({_id: req.session.essay._id}, function (err, commentObj) {
             console.log('dayinchu#####:'+req.params._id);
             if (!commentObj) {
