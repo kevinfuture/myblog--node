@@ -32,7 +32,8 @@ router.get('/Essay/comment/:_id?', function(req, res, next) {
                     followcount: req.session.followcount == null ? 0 : req.session.funscount,
                     follow1:req.session.follow1==null?null:req.session.follow1,
                     follow2:req.session.follow2==null?null:req.session.follow2,
-                    follow3:req.session.follow3==null?null:req.session.follow3
+                    follow3:req.session.follow3==null?null:req.session.follow3,
+                    newUserList:req.session.newUserList==null?null:req.session.newUserList
                 });
             });
         });

@@ -21,7 +21,8 @@ router.get('/changephoto', function(req, res) {
             funscount:req.session.funscount==null?0:req.session.funscount,
             followcount:req.session.followcount==null?0:req.session.funscount,
             success : req.flash('success').toString(),
-            error : req.flash('error').toString()
+            error : req.flash('error').toString(),
+            newUserList:req.session.newUserList==null?null:req.session.newUserList
         });
     });
 });

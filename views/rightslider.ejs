@@ -53,7 +53,11 @@
         <div class="list-users">
             <ul class="clearfix">
                 <li>
-                    <a href='javascript:void(0)' title="nopic"><img class="media-object" src="/images/nopic.jpg" /></a>
+                    <% if(newUserList){%>
+                        <%newUserList.forEach(function(value,index,array){%>
+                             <a href='javascript:void(0)' title="新人"><img class="media-object" src="<%=array[index].headPic==null?"/images/nopic.jpg":array[index].headPic%>" /></a>
+                        <%});%>
+                 <% }%>
                 </li>
             </ul>
         </div>
