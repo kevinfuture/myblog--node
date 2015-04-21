@@ -37,6 +37,7 @@ router.get('/:users?', function(req, res, next) {
                                         array[index].baseObj[0].Date = moment(array[index].baseObj[0].Date).format('YYYY/MM/DD hh:mm a');
                                     });
                                     req.session.calenderdate = calenderdate;
+                                    req.session.currentUserName = name;
                                     res.render('Blog/index', {
                                         user: user,
                                         essaycount: essaycount == 0 ? 0 : essaycount,//文章数目

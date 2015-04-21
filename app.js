@@ -83,12 +83,17 @@ app.use(session({
 app.use(function(req, res, next){
     console.log("app.usr local");
     res.locals.user = req.session.user;
+    res.locals.currentUserName = req.session.currentUserName;//当前浏览的博客园主的姓名
     res.locals.post = req.session.post;
     res.locals.essay = req.session.essay;
     res.locals.calenderdate = req.session.calenderdate;
     res.locals.currentpage = req.session.currentpage;
     res.locals.funscount = req.session.funscount;
     res.locals.followcount = req.session.followcount;
+    res.locals.followObject = req.session.followObject;//当前浏览的博客园主关注的人
+    res.locals.follow1 = req.session.follow1;//当前浏览的博客园主关注的人的第一个人
+    res.locals.follow2 = req.session.follow2;//当前浏览的博客园主关注的人的第二个人
+    res.locals.follow3 = req.session.follow3;//当前浏览的博客园主关注的人的第三个人
     var error = req.flash('error');
     res.locals.error = error.length ? error : null;
 

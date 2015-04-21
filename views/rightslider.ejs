@@ -19,53 +19,43 @@
                 </h4>
                 <p class="theCurrentSign">这家伙很懒，还没有签名</p>
                 <p>粉丝：<span class="badge badge-important"><%=funscount%></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关注：<a href="/mine"><span class="badge badge-info" id="J-userInfor-topicCount"><%=funscount%></span></a></p>
-                <p>金币：<span class="badge">41</span>
                 </p>
             </div>
         </div>
     </div>
 
     <div class="widget-list">
-        <h5 class="widget-head"><i class="icon-heart"></i> 我关注的人<span>(0)</span></h5>
-
-    </div>
-    <div class="widget-list">
-        <h5 class="widget-head"><i class="icon-fire"></i> 最热话题 | Hot</h5>
-        <div class="media-body">
-            <ul class="widget-category">
-
+        <h5 class="widget-head"><i class="icon-heart"></i> 关注的人<span  class="badge" style="color:green"><%=followcount%></span></h5>
+        <div class="list-users">
+            <ul class="clearfix">
+                <li>
+                        <!--<a href='javascript:void(0)' title="xyx， 1个微博"><img class="media-object img-rounded" src="/images/nopic.jpg" /></a>-->
+                        <a href='javascript:void(0)' title="<%=follow1==null?null:follow1.name%>"><img class="media-object img-rounded" src="<%=follow1==null?"/images/nopic.jpg":follow1.headPic%>" /></a>
+                        <a href='javascript:void(0)' title="<%=follow2==null?null:follow2.name%>"><img class="media-object img-rounded" src="<%=follow2==null?"/images/nopic.jpg":follow2.headPic%>" /></a>
+                        <a href='javascript:void(0)' title="<%=follow3==null?null:follow3.name%>"><img class="media-object img-rounded" src="<%=follow3==null?"/images/nopic.jpg":follow3.headPic%>" /></a>
+                </li>
             </ul>
         </div>
     </div>
     <div class="widget-list">
-        <h5 class="widget-head"><i class="icon-star"></i> 微博之星 | Star(这里跟下边要进行一次查询：按照微博数量，跟最新加入时间的人查出3个来)</h5>
-
+        <h5 class="widget-head"><i class="icon-star"></i> 博客之星 | Star(这里跟下边要进行一次查询：按照微博数量，跟最新加入时间的人查出3个来)</h5>
         <div class="list-users">
             <ul class="clearfix">
-
-
                 <li>
-                    <a href='/user/xyx' title="xyx， 1个微博"><img class="media-object img-rounded" src="/images/nopic.jpg" /></a>
+                    <a href='javascript:void(0)' title="xyx， 1个微博"><img class="media-object img-rounded" src="/images/nopic.jpg" /></a>
                 </li>
-
             </ul>
         </div>
 
     </div>
     <div class="widget-list">
         <h5 class="widget-head"><i class="icon-leaf"></i> 最新加入 | New</h5>
-
         <div class="list-users">
             <ul class="clearfix">
-
-
                 <li>
-                    <a href='/user/xyx' title="xyx"><img class="media-object" src="/images/nopic.jpg" />
-                        <span>xyx</span></a>
+                    <a href='javascript:void(0)' title="nopic"><img class="media-object" src="/images/nopic.jpg" /></a>
                 </li>
-
             </ul>
         </div>
-
     </div>
 </div>

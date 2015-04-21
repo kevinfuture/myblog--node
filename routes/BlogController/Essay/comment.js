@@ -27,7 +27,12 @@ router.get('/Essay/comment/:_id?', function(req, res, next) {
                 res.render('Blog/Essay/showessay', {
                     commentContent:currentcomment==null?null:currentcomment.commentContent,
                     essay: essay,
-                    comment:commentlist
+                    comment:commentlist,
+                    funscount: req.session.funscount == null ? 0 : req.session.funscount,
+                    followcount: req.session.followcount == null ? 0 : req.session.funscount,
+                    follow1:req.session.follow1==null?null:req.session.follow1,
+                    follow2:req.session.follow2==null?null:req.session.follow2,
+                    follow3:req.session.follow3==null?null:req.session.follow3
                 });
             });
         });

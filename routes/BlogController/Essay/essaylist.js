@@ -19,7 +19,11 @@ router.get('/:user?/Essay/essaylist', function(req, res, next) {
                 title: req.session.user.name+'的随笔',
                 essaylist:essaypost,
                 funscount:req.session.funscount==null?0:req.session.funscount,
-                followcount:req.session.followcount==null?0:req.session.funscount
+                followcount:req.session.followcount==null?0:req.session.funscount,
+                followList: req.session.followObject==null?null: req.session.followObject,
+                follow1: req.session.follow1==null?null: req.session.follow1,
+                follow2: req.session.follow2==null?null: req.session.follow2,
+                follow3: req.session.follow3==null?null: req.session.follow3
             });
         });
     });
