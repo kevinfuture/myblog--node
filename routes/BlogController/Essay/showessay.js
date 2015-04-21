@@ -33,7 +33,9 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
                 res.render('Blog/Essay/showessay', {
                     commentContent: null,
                     essay: essay,
-                    comment: commentlist
+                    comment: commentlist,
+                    funscount:req.session.funscount==null?0:req.session.funscount,
+                    followcount:req.session.followcount==null?0:req.session.funscount
                 });
             });
         }else{
@@ -62,7 +64,9 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
                         res.render('Blog/Essay/showessay', {
                             commentContent: null,
                             essay: essay,
-                            comment: commentlist
+                            comment: commentlist,
+                            funscount:req.session.funscount==null?0:req.session.funscount,
+                            followcount:req.session.followcount==null?0:req.session.funscount
                         });
                     });
                 });

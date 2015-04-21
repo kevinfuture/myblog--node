@@ -17,7 +17,9 @@ router.get('/:user?/Essay/essaylist', function(req, res, next) {
             });
             res.render('Blog/Essay/essaylist', {
                 title: req.session.user.name+'的随笔',
-                essaylist:essaypost
+                essaylist:essaypost,
+                funscount:req.session.funscount==null?0:req.session.funscount,
+                followcount:req.session.followcount==null?0:req.session.funscount
             });
         });
     });
