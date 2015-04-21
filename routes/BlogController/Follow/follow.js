@@ -11,7 +11,12 @@ module.exports = function(router) {
             return res.redirect('/login');
         }
         var followwhoname = req.query.followwhoname,
-            currentUser = req.session.user
+            currentUser = req.session.user;
+        if(followwhoname==currentUser.name)
+        {
+            req.flash('error', '╮(╯▽╰)╭，不能关注自己奥！！！');
+            return res.redirect('/'+currentUser.name);
+        }
         var newfuns = new Follow.Follow({
             whofollowname: currentUser.name,
             followwhoname: followwhoname

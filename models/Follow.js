@@ -7,8 +7,8 @@ var baseObject = require('../models/BaseObject');
 var Schema = db.mongoose.Schema;
 var ObjectId =Schema.Types.ObjectId;
 var FollowSchema = new Schema({
-    whofollowname:{type:String,index: true},//此处我设置了name为唯一性的索引，它自动指向数据文档的_id，所以我可以不用设置_id
-    followwhoname:String,
+    whofollowname:{type:String,index: true},//此处我设置了name为唯一性的索引，它自动指向数据文档的_id，所以我可以不用设置_id，用户的粉丝谁关注
+    followwhoname:String,//用户的关注，关注谁
     baseObj:{type:Array,default:baseObject.BaseObject.call(this)}
 });
 FollowSchema.methods.find = function (whofollowname, callback) {
