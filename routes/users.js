@@ -19,6 +19,9 @@ router.get('/users', function(req, res) {
                         }
                         var currentUser = req.session.user;
                         req.session.followObject = follow;
+                        req.session.follow1=follow1;
+                        req.session.follow2=follow2;
+                        req.session.follow3=follow3;
                         if (!currentUser) {
                             req.flash('error', '请登录！！！');
                             return res.redirect('/login');
