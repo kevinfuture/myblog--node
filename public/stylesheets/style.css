@@ -166,7 +166,7 @@ a{text-decoration:none;color:#333;}
 .hero-unit .action-btn button:hover{box-shadow: 1px 1px 1px #006dcc;}
 .hero-unit .action-btn a{padding:9px 32px;font-size:14px;background-color: #006dcc;border-radius:4px;color:#fff; }
 .hero-unit .action-btn a:hover{text-decoration:none;box-shadow: 1px 1px 1px #006dcc;}
-
+.hero-unit .alertn{color: red;padding-left: 182px;}
 #confirm-pass{width:890px;margin:0 auto;}
 #confirm-pass .form-horizontal .control-label{width:100px;}
 #confirm-pass .form-horizontal .controls{margin-left:120px;}
