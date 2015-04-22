@@ -45,7 +45,7 @@
                 <h2>日期：<%=array[index].baseObj[0].Date%>来自用户：<%=array[index].commentUser%></h2>
                 <p>评论<%=array[index].commentContent%></p>
                 <%if(array[index].commentUser==user.name){%>
-                <p class="con-msg"><a href="/Essay/comment/<%=array[index]._id%>">修改</a><a href="/commentDel/?commentid=<%=array[index]._id%>&&essayUsername=<%=essay.username %>&&essayCaption=<%=essay.caption%>">删除</a></p>
+                <p class="con-msg"><a href="/Essay/comment/<%=array[index]._id%>">修改</a><a href="/commentDel/?commentid=<%=array[index]._id%>&&essayUsername=<%=essay.username%>&&essayCaption=<%=essay.caption%>">删除</a></p>
                 <%}%>
             </div>
             <%});%>
