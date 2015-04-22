@@ -13,7 +13,10 @@
                 <div class="item">
                     <h2><a href="/Essay/newessay/<%=array[index]._id%>"><%=array[index].caption%></a></h2>
                     <p>摘要:<%=array[index].content==null?'无':array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
-                    <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%>  作者：<%=array[index].username%> 阅读 (<span> <%=array[index].browsercount%> </span>) <a href="/Essay/newessay/<%=array[index]._id%>"> 编辑 </a> </p>
+                    <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%>  作者：<%=array[index].username%>
+                        阅读 (<span> <%=array[index].browsercount%> </span>)
+                        <a href="/Essay/newessay/<%=array[index]._id%>"> 编辑 </a>
+                        <a href="/essayDel/?essayid=<%=array[index]._id%>"> 删除 </a></p>
                 </div>
                 <%});%>
                 <% }%>

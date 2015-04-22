@@ -32,7 +32,7 @@ router.get('/:users?', function(req, res, next) {
                         mongoose.model('EssayPost').count({username: name}, function (err, essaycount) {//这里返回的是总的文章个数
                             mongoose.model('EssayPost').find({username: name}).sort({'_id': -1}).skip((page - 1) * 10).limit(10).exec(function (err, essaylist) {//这里返回的是对象
                                 //***************注意以后这里要做分页********************
-                                mongoose.model('Comment').find({username: req.session.user.name}).sort({'_id': -1}).limit(10).exec(function (err, newcommentlist) {
+                                mongoose.model('Comment').find({username: name}).sort({'_id': -1}).limit(10).exec(function (err, newcommentlist) {
                                     newcommentlist.forEach(function (value, index, array) {
                                         array[index].baseObj[0].Date = moment(array[index].baseObj[0].Date).format('YYYY/MM/DD hh:mm a');
                                     });
@@ -40,6 +40,7 @@ router.get('/:users?', function(req, res, next) {
                                     req.session.currentUserName = name;
                                     res.render('Blog/index', {
                                         user: user,
+                                        userMacth:req.session.user==null?false:(req.session.user.name==name?true:false),
                                         essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
                                         essaylist: essaylist,//文章的对象
                                         newcommentlist: newcommentlist,
@@ -69,6 +70,7 @@ router.get('/:users?', function(req, res, next) {
                                     });
                                     res.render('Blog/index', {
                                         user: user,
+                                        userMacth:req.session.user==null?false:(req.session.user.name==name?true:false),
                                         essaycount: essaycount == 0 ? 0 : essaycount,//文章数目
                                         essaylist: essaylist,//文章的对象
                                         newcommentlist: newcommentlist,

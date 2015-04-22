@@ -23,7 +23,9 @@
                     <li><a href="/Essay/newessay/:_id?">新日志</a></li>
                     <!--<li><a href="/Album/photo">相册</a></li>-->
                     <!--<li><a href="/File/uploadfile">文件</a></li>-->
+                    <%if(userMacth){%>
                     <li><a href="/<%=user.name%>/Essay/essaylist">显示日志记录</a></li>
+                    <%}%>
                 </ul>
             </nav>
         </div>
