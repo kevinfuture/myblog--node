@@ -1,6 +1,6 @@
 <% include header.ejs %>
 <div id="reg">
-    <% include verification.ejs %>
+
     <form class="form-horizontal" method="post">
         <FIELDSET>
             <LEGEND>用户注册</LEGEND>
@@ -21,6 +21,7 @@
                 <div class="controls">
                     <input type="password" class="input-xlarge" id="password-repeat" name="password-repeat"></div>
             </div>
+            <% include verification.ejs %>
             <!--<div class="form-actions">--><button type="submit" class="btn btn-primary">注册</button>
             <a href="/login" class="login-btn">立即登录</a>
             <!--</div>-->
