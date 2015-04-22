@@ -69,16 +69,26 @@
                         </div>
                         <%});%>
                     <% }%>
+                    <div class="clearfix ">
+                        <!--<div class="page r"><a href="javascript:;">下一页</a></div>-->
+                        <ul class="pagination" id="pagination"> </ul>
+                    </div>
                 </div>
             </div>
-        <div class="clearfix">
-            <!--<div class="page r"><a href="javascript:;">下一页</a></div>-->
-            <ul class="pagination" id="pagination">
-            </ul>
-        </div>
+
         <div class="clearfix copy-right">
             Copyright ©2015 <%=user.name%>
         </div>
     </div>
+    <script>
+        window.onload = function(){
+            var oPage = document.getElementById('pagination');
+            var aLi = oPage.children;
+            var aLiH = aLi[1].offsetWidth;
+            oPage.style.width = (aLiH * aLi.length + 76) + 'px';
+            oPage.style.marginLeft = -(aLiH * aLi.length + 76)/2 + 'px';
+
+        };
+    </script>
 <% include footer.ejs %>
 
