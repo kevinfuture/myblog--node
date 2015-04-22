@@ -9,10 +9,10 @@ router.get('/Essay/comment/:_id?', function(req, res, next) {
         mongoose.model('Comment').findOne({_id: req.params._id}, function (err, currentcomment) {
             console.log('currentcomment:' + currentcomment);
             mongoose.model('EssayPost').findOne({username:currentcomment.username,caption:currentcomment.caption},function(err,essay) {
-                console.log('#####:' + essay);
+               //console.log('#####:' + essay);
                 req.session.essay = essay;
             mongoose.model('Comment').find({username:essay.username,caption:essay.caption},function(err,commentlist) {
-                console.log('******:' + commentlist);
+               // console.log('******:' + commentlist);
                 commentlist.forEach(function(value,index,array){
                     array[index].baseObj[0].Date=moment(array[index].baseObj[0].Date).format();
                 });
@@ -26,7 +26,7 @@ router.get('/Essay/comment/:_id?', function(req, res, next) {
                     });
                 }
                 res.render('Blog/Essay/showessay', {
-                    commentContent:currentcomment==null?null:currentcomment.commentContent,
+                    commentContent:currentcomment==null?'没有':currentcomment.commentContent,
                     essay: essay,
                     comment:commentlist,
                     funscount: req.session.funscount == null ? 0 : req.session.funscount,
