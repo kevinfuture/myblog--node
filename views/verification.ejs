@@ -1,3 +1,9 @@
 
-<div class="alertn ">
-    2222222</div>
+<% if (success) { %>
+<div class="alertn">
+    <%= success %></div>
+<% } %>
+<% if (error) { %>
+<div class="alertn">
+    <%= error %></div>
+<% } %>
