@@ -41,7 +41,8 @@ router.post('/Essay/newessay', function(req, res, next) {
                                     username: req.session.user.name,
                                     caption: req.body.caption,
                                     content: req.body.content,
-                                    TDate: moment(Date.now()).format('l')
+                                    TDate: moment(Date.now()).format('l'),
+                                    commentcount:0
                                 });
                                 newEssayPost.save(function (err) {
                                     if (err) {

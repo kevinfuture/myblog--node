@@ -6,13 +6,11 @@ var CommentSchema = require('../../../models/Comment.js');
 
 /* GET home page. */
 router.get('/Essay/comment/:_id?', function(req, res, next) {
-        mongoose.model('Comment').findOne({_id: req.params._id}, function (err, currentcomment) {
+        mongoose.model('Comment').findOne({_id: req.params._id||req.query._id}, function (err, currentcomment) {
             console.log('currentcomment:' + currentcomment);
             mongoose.model('EssayPost').findOne({username:currentcomment.username,caption:currentcomment.caption},function(err,essay) {
-               //console.log('#####:' + essay);
                 req.session.essay = essay;
             mongoose.model('Comment').find({username:essay.username,caption:essay.caption},function(err,commentlist) {
-               // console.log('******:' + commentlist);
                 commentlist.forEach(function(value,index,array){
                     array[index].baseObj[0].Date=moment(array[index].baseObj[0].Date).format();
                 });
@@ -47,10 +45,15 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
     { req.flash('error', '请登录后评论！！！');
         return res.redirect('/login');
     }
-    mongoose.model('EssayPost').find({username:req.session.essay.username,caption:req.session.essay.caption},function(err,thisessaycommentcount) {
+    mongoose.model('EssayPost').findOne({username:req.session.essay.username,caption:req.session.essay.caption},function(err,thisessaycommentcount) {
         mongoose.model('Comment').count({_id: req.session.essay._id}, function (err, commentObj) {
-            console.log('dayinchu#####:'+req.params._id);
+            console.log('dayinchu#####:'+thisessaycommentcount);
             if (!commentObj) {
+                mongoose.model('EssayPost').findOneAndUpdate({username:req.session.essay.username,caption:req.session.essay.caption},{commentcount:++(thisessaycommentcount.commentcount)}, function (commentcounterr, essayObject) {
+                    if(commentcounterr){
+                        req.flash('error',commentcounterr);
+                        return res.redirect('/Essay/showessay/'+req.session.essay._id);
+                    }
                 var newComment = new CommentSchema.Comment({
                     username: req.session.essay.username,//这里要取得参数
                     caption: req.session.essay.caption,
@@ -61,17 +64,18 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
                 newComment.save(function (err) {
                     if (err) {
                         req.flash('error', err);
-                        return res.redirect('/Essay/showessay');
+                        return res.redirect('/Essay/showessay/'+req.session.essay._id);
                     }
                     req.flash('success', '评论成功！！！');
                     mongoose.model('Comment').find({
                         username: req.session.essay.username,
                         caption: req.session.essay.caption
                     }, function (err, commentlist) {
-                        res.render('Blog/Essay/showessay', {
-                            commentContent:null,
-                            essay: req.session.essay,
-                            comment:commentlist
+                            res.render('Blog/Essay/showessay', {
+                                commentContent: null,
+                                essay: req.session.essay,
+                                comment: commentlist
+                            });
                         });
                     });
                 });
