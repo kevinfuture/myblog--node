@@ -16,7 +16,7 @@
                     <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%>  作者：<%=array[index].username%>
                         阅读 (<span> <%=array[index].browsercount%> </span>)
                         <a href="/Essay/newessay/<%=array[index]._id%>"> 编辑 </a>
-                        <a href="/essayDel/?essayid=<%=array[index]._id%>"> 删除 </a></p>
+                        <a href="/essayDel/?essayid=<%=array[index]._id%>&&essayCaption=<%=array[index].caption%>"> 删除 </a></p>
                 </div>
                 <%});%>
                 <% }%>
