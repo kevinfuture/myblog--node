@@ -2,14 +2,31 @@
  * Created by Administrator on 2015/3/9.
  */
 
-$(function(){
-    $(".nav #base-msg").mouseover(function(){
-        $('.nav #base-msg .hide').show();
-    });
-    $(".nav #base-msg").mouseout(function(){
-        $('.nav #base-msg .hide').hide();
-    });
-});
+//$(function(){
+//    var timer = null;
+//    $(".nav #base-msg").mouseover(function(){
+//            clearTimeout(timer);
+//            $('.nav #base-msg .hide').show();
+//    });
+//    $('.nav #base-msg .hide').mouseover(function(){
+//        clearTimeout(timer);
+//        $('.nav #base-msg .hide').show();
+//
+//    });
+//    $(".nav #base-msg").mouseout(function(){
+//       timer= setTimeout(function(){
+//            $('.nav #base-msg .hide').hide();
+//        },300)
+//
+//    });
+//    $(".nav #base-msg .hide").mouseout(function(){
+//         timer= setTimeout(function(){
+//            $('.nav #base-msg .hide').hide();
+//        },300)
+//
+//    });
+//
+//});
 $(function(){
     var iNow = 0;
     var timer = null;

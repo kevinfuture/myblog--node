@@ -5,6 +5,14 @@
 </div>
 <div class="upper-page clearfix">
     <!--这里是更换头像的页面-->
+    <% if (success) { %>
+    <div class="alert alert-success">
+        <%= success %></div>
+    <% } %>
+    <% if (error) { %>
+    <div class="alert alert-error">
+        <%= error %></div>
+    <% } %>
     <div class="form-horizontal base-msg l b" method="post">
         <div class="row">
             <div class="span8">

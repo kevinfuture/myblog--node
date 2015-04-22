@@ -4,6 +4,7 @@
     <title><%= user.name %></title>
     <meta charset="utf-8">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!--<link rel='stylesheet' href="/stylesheets/bootstrap.css">-->
     <script src="/javascripts/jquery.js"></script>
     <script src="/javascripts/bootstrap.js"></script>
     <script src="/javascripts/bootstrap-paginator.min.js"></script>
@@ -64,14 +65,14 @@
                         <input type="hidden"id="caption" name="caption" value="<%=array[index].caption==null?'没有标题':array[index].caption%>">
                         <div class="item">
                             <h2><a href="/Essay/showessay/<%=array[index]._id%>"><%=array[index].caption%></a></h2>
-                            <p>摘要:<%=array[index].content==null?'没有内容':array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
-                            <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span><%=array[index].commentcount%></span>)<a href="/Essay/newessay/<%=array[index]._id%>">编辑</a> </p>
+                            <p>摘要:<%=array[index].content==null?'没有内容':array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a class="text-info" href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
+                            <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span><%=array[index].commentcount%></span>)<a class="text-info" href="/Essay/newessay/<%=array[index]._id%>">编辑</a> </p>
                         </div>
                         <%});%>
                     <% }%>
                     <div class="clearfix ">
                         <!--<div class="page r"><a href="javascript:;">下一页</a></div>-->
-                        <ul class="pagination" id="pagination"> </ul>
+                        <ul class="pagination " id="pagination"> </ul>
                     </div>
                 </div>
             </div>
