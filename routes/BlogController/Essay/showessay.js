@@ -42,8 +42,8 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
         }else{
             mongoose.model('Comment').findOne({_id:req.params._id},function(err,thiscomment) {
                 mongoose.model('EssayPost').findOne({
-                    username: thiscomment.username,
-                    caption: thiscomment.caption
+                    username: thiscomment==null?null:thiscomment.username,
+                    caption: thiscomment==null?null:thiscomment.caption
                 }, function (err, essay) {
                     mongoose.model('Comment').find({
                         username: essay.username,
