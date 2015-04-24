@@ -4,6 +4,7 @@
     <title><%= user.name %></title>
     <meta charset="utf-8">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!--<link rel='stylesheet' href="/stylesheets/bootstrap.css">-->
     <script src="/javascripts/jquery.js"></script>
     <script src="/javascripts/bootstrap.js"></script>
     <script src="/javascripts/bootstrap-paginator.min.js"></script>
@@ -11,19 +12,22 @@
 </head>
 <body>
 <div id="container" class="container">
-<div class="enter-index-header">
-    <div class="content">
-        <h1><%= user.name %></h1>
-        <nav>
-            <ul class="clearfix">
-                <li><a href="/">首页</a></li>
-                <li><a href="javascript:;">博客园</a></li>
-                <li><a href="/Essay/newessay/:_id?">新日志</a></li>
-                <!--<li><a href="/Album/photo">相册</a></li>-->
-                <!--<li><a href="/File/uploadfile">文件</a></li>-->
-                <li><a href="/<%=user.name%>/Essay/essaylist">显示日志记录</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
 
+    <div id="enter-index">
+        <div class="enter-index-header">
+            <div class="content">
+                <h1><%= user.name %></h1>
+                <nav>
+                    <ul class="clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="javascript:;">博客园</a></li>
+                        <li><a href="/Essay/newessay/?newESSAY=NEW">新日志</a></li>
+                        <!--<li><a href="/Album/photo">相册</a></li>-->
+                        <!--<li><a href="/File/uploadfile">文件</a></li>-->
+                        <%if(userMacth){%>
+                        <li><a href="/<%=user.name%>/Essay/essaylist">显示日志记录</a></li>
+                        <%}%>
+                    </ul>
+                </nav>
+            </div>
+        </div>

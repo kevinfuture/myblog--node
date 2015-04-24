@@ -6,15 +6,15 @@ var User = require('../../../models/User');//在newessay.js文件所在父目录
 var EssayPost = require('../../../models/EssayPost');
 
 /* GET home page. */
-router.get('/Essay/newessay/:_id?', function(req, res, next) {
+router.get('/Essay/newessay', function(req, res, next) {
         if (!req.session.user) {
             req.flash('error', '请登录！！！');
             return res.redirect('/login');
         }
-    mongoose.model('EssayPost').findOne({_id:req.params._id},function(err,essay){
-        console.log('caption:'+essay);
+    mongoose.model('EssayPost').findOne({_id:req.query._id},function(err,essay){
         res.render('Blog/Essay/newessay', {
-            essay:essay
+            essay:essay,
+            newESSAY:req.query.newESSAY
         });
     });
 });
@@ -27,7 +27,6 @@ router.post('/Essay/newessay', function(req, res, next) {
             username: req.session.user.name,
             caption: req.body.caption
         }, function (err, essay) {
-            console.log('##########################]]]]]]]]]]]]]]#####'+essay);
             mongoose.model('Comment').find({username: req.session.user.name}).sort({'_id': -1}).limit(10).exec(function (err, newcommentlist) {
                 newcommentlist.forEach(function (value, index, array) {
                     array[index].baseObj[0].Date = moment(array[index].baseObj[0].Date).format('YYYY/MM/DD hh:mm a');
@@ -62,6 +61,12 @@ router.post('/Essay/newessay', function(req, res, next) {
                                     res.redirect('/'+user.name);
                                 });
                             } else {
+                                if(req.body.newESSAY){
+                                    if(essay.caption==req.body.caption){
+                                        req.flash('error', '╮(╯﹏╰)╭，已经存在改标题了~');
+                                        return res.redirect('/Essay/newessay');
+                                    }
+                                }
                                 mongoose.model('EssayPost').findOneAndUpdate({
                                     username: req.session.user.name,
                                     caption: req.body.caption

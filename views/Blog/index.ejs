@@ -1,36 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%= user.name %></title>
-    <meta charset="utf-8">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <!--<link rel='stylesheet' href="/stylesheets/bootstrap.css">-->
-    <script src="/javascripts/jquery.js"></script>
-    <script src="/javascripts/bootstrap.js"></script>
-    <script src="/javascripts/bootstrap-paginator.min.js"></script>
-    <% include calenderScript.ejs %>
-</head>
-<body>
-<div id="container" class="container">
-
-<div id="enter-index">
-    <div class="enter-index-header">
-        <div class="content">
-            <h1><%= user.name %></h1>
-            <nav>
-                <ul class="clearfix">
-                    <li><a href="/">首页</a></li>
-                    <li><a href="javascript:;">博客园</a></li>
-                    <li><a href="/Essay/newessay/:_id?">新日志</a></li>
-                    <!--<li><a href="/Album/photo">相册</a></li>-->
-                    <!--<li><a href="/File/uploadfile">文件</a></li>-->
-                    <%if(userMacth){%>
-                    <li><a href="/<%=user.name%>/Essay/essaylist">显示日志记录</a></li>
-                    <%}%>
-                </ul>
-            </nav>
-        </div>
-    </div>
+<% include header.ejs %>
     <div class="wrapper">
         <div class="blog-status r"> 随笔- <%=essaycount%>  总评论- <%=commmentcount%>
             <h4>
@@ -75,7 +43,7 @@
                         <div class="item">
                             <h2><a href="/Essay/showessay/<%=array[index]._id%>"><%=array[index].caption%></a></h2>
                             <p>摘要:<%=array[index].content==null?'没有内容':array[index].content.replace(/<[^>]+>/g,'').substring(0,30)%> ...<a class="text-info" href="/Essay/showessay/<%=array[index]._id%>">阅读全文</a></p>
-                            <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span><%=array[index].commentcount%></span>)<a class="text-info" href="/Essay/newessay/<%=array[index]._id%>">编辑</a> </p>
+                            <p class="con-msg">posted @ <%=array[index].baseObj[0].Date%> 作者：<%=array[index].username%> 阅读(<span><%=array[index].browsercount%></span>) 评论(<span><%=array[index].commentcount%></span>)<a class="text-info" href="/Essay/newessay/?_id=<%=array[index]._id%>">编辑</a> </p>
                         </div>
                         <%});%>
                     <% }%>

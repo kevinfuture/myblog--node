@@ -33,6 +33,7 @@
                 <div class="control-group">
                     <label class="control-label" for="username" style="display:block;padding:6px 0;">内容</label>
                     <div class="controls">
+                       <input type="hidden" value="<%=newESSAY%>" name="newESSAY"/>
                         <input type="hidden" id="essaycontent" name="essaycontent" value="<%=essay==null?null:essay.content%>"/>
                         <script id="editor" type="text/plain" style="width:1024px;height:500px;" name="content"></script>
                     </div>

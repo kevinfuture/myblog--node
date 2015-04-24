@@ -139,7 +139,7 @@ app.get('/skipmiddle',skipmiddle);
 //app.get('/:users?/:calenderdate?/:page?',blogindex);
 app.get('/:users?',blogindex);
 //随笔的路由指向
-app.get('/Essay/newessay/:_id?',newessay);
+app.get('/Essay/newessay',newessay);
 app.post('/Essay/newessay',newessay);
 app.get('/:user?/Essay/essaylist',essaylist);
 app.get('/Essay/showessay/:_id?',showessay);
