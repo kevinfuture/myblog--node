@@ -24,7 +24,7 @@ router.get('/Essay/comment/:_id?', function(req, res, next) {
                     });
                 }
                 res.render('Blog/Essay/showessay', {
-                    commentContent:currentcomment==null?'没有':currentcomment.commentContent,
+                    currentcomment:currentcomment,
                     essay: essay,
                     comment:commentlist,
                     funscount: req.session.funscount == null ? 0 : req.session.funscount,
@@ -45,9 +45,9 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
     { req.flash('error', '╮(╯﹏╰)╭，还没有登录—然后评论');
         return res.redirect('/login');
     }
+    console.log('_________________________'+req.body.currentcommentId);
     mongoose.model('EssayPost').findOne({username:req.session.essay.username,caption:req.session.essay.caption},function(err,thisessaycommentcount) {
-        mongoose.model('Comment').count({_id: req.session.essay._id}, function (err, commentObj) {
-            console.log('dayinchu#####:'+thisessaycommentcount);
+        mongoose.model('Comment').count({_id: req.body.currentcommentId}, function (err, commentObj) {
             if (!commentObj) {
                 mongoose.model('EssayPost').findOneAndUpdate({username:req.session.essay.username,caption:req.session.essay.caption},{commentcount:++(thisessaycommentcount.commentcount)}, function (commentcounterr, essayObject) {
                     if(commentcounterr){
@@ -71,22 +71,17 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
                         username: req.session.essay.username,
                         caption: req.session.essay.caption
                     }, function (err, commentlist) {
-                            //res.render('Blog/Essay/showessay', {
-                            //    commentContent: null,
-                            //    essay: req.session.essay,
-                            //    comment: commentlist
-                            //});
                         return res.redirect('/Essay/showessay/'+req.session.essay._id);
                         });
                     });
                 });
             } else {
-                mongoose.model('Comment').findOneAndUpdate({_id: req.params._id}, {commentContent: req.body.commentContent,commentcount:++(thisessaycommentcount.commentContent)}, function (err, comment) {
+                mongoose.model('Comment').findOneAndUpdate({_id: req.params._id||req.body.currentcommentId}, {commentContent: req.body.commentContent,commentcount:++(thisessaycommentcount.commentContent)}, function (err, comment) {
                     if (err) {
                         req.flash('error', err);
-                        return res.redirect('/Essay/showessay');
+                        return res.redirect('/Essay/showessay/'+req.session.essay._id);
                     }
-                    return res.redirect('/Essay/showessay');
+                    return res.redirect('/Essay/showessay/'+req.session.essay._id);
                 });
             }
         });

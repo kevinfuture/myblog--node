@@ -58,9 +58,10 @@
                 <fieldset>
                     <legend><%=user.name%></legend>
                     <div class="control-group">
+                        <input type="hidden" name="currentcommentId" value="<%=currentcomment==null?'':currentcomment._id%>"/>
                         <label class="control-label comment1" for="commentContent">评论</label>
                         <div class="controls">
-                            <textarea type="text" class="input-xlarge" id="commentContent" name="commentContent" value=""><%=commentContent%></textarea>
+                            <textarea type="text" class="input-xlarge" id="commentContent" name="commentContent" value=""><%=currentcomment==null?'':currentcomment.commentContent%></textarea>
                         </div>
                     </div>
                     <div class="form-actions r">

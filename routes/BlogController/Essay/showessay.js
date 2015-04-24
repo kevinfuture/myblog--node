@@ -31,7 +31,7 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
                 }
                 req.session.essay = essay;
                 res.render('Blog/Essay/showessay', {
-                    commentContent: null,
+                    currentcomment: null,
                     essay: essay,
                     comment: commentlist,
                     funscount:req.session.funscount==null?0:req.session.funscount,
@@ -63,7 +63,7 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
                         }
                         req.session.essay = essay;
                         res.render('Blog/Essay/showessay', {
-                            commentContent: null,
+                            currentcomment: null,
                             essay: essay,
                             comment: commentlist,
                             funscount:req.session.funscount==null?0:req.session.funscount,
