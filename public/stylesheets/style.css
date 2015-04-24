@@ -111,7 +111,7 @@ a{text-decoration:none;color:#333;}
 #enter-index .main-banner ul li .today{text-decoration:underline;}
 #enter-index .main-banner .new-comment{padding-top:10px;font-size:12px;line-height:1.828;}
 
-#enter-index .main-content{width:650px;}
+#enter-index .main-content{width:650px;margin-top: 25px;}
 #enter-index .main-content h2 {margin-top:12px; font-size: 18px;font-weight: normal; line-height: normal;}
 #enter-index .main-content h2 a{color: #6a6352;}
 #enter-index .main-content h2 a:hover{text-decoration:underline;}

@@ -23,10 +23,11 @@ router.post('/Essay/newessay', function(req, res, next) {
     mongoose.model('User').findOne({name:req.session.user.name},function(err,user) {
         var age = moment(moment(user.baseObj[0].Date).format('YYYY/MM/DD'), 'YYYYMMDD').fromNow().split(' ');
         user.baseObj[0].Date = age[0] + ' ' + age[1];
-        mongoose.model('EssayPost').count({
+        mongoose.model('EssayPost').findOne({
             username: req.session.user.name,
             caption: req.body.caption
         }, function (err, essay) {
+            console.log('##########################]]]]]]]]]]]]]]#####'+essay);
             mongoose.model('Comment').find({username: req.session.user.name}).sort({'_id': -1}).limit(10).exec(function (err, newcommentlist) {
                 newcommentlist.forEach(function (value, index, array) {
                     array[index].baseObj[0].Date = moment(array[index].baseObj[0].Date).format('YYYY/MM/DD hh:mm a');
@@ -36,7 +37,7 @@ router.post('/Essay/newessay', function(req, res, next) {
                     mongoose.model('Comment').count({username: req.session.user.name}, function (err, commmentcount) {//这里返回的是总的评论数
                         mongoose.model('EssayPost').find({username: req.session.user.name}, function (err, essaylist) {//这里返回的是对象
                             console.log('获取id测试：' + req.body.essay_id);
-                            if (essay == 0) {
+                            if (essay == null) {
                                 var newEssayPost = new EssayPost.EssayPost({
                                     username: req.session.user.name,
                                     caption: req.body.caption,
