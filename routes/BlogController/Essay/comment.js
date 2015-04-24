@@ -71,11 +71,12 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
                         username: req.session.essay.username,
                         caption: req.session.essay.caption
                     }, function (err, commentlist) {
-                            res.render('Blog/Essay/showessay', {
-                                commentContent: null,
-                                essay: req.session.essay,
-                                comment: commentlist
-                            });
+                            //res.render('Blog/Essay/showessay', {
+                            //    commentContent: null,
+                            //    essay: req.session.essay,
+                            //    comment: commentlist
+                            //});
+                        return res.redirect('/Essay/showessay/'+req.session.essay._id);
                         });
                     });
                 });
