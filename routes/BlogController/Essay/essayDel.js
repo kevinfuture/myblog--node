@@ -11,7 +11,7 @@ module.exports = function(router) {
         var getId = req.query.essayid,
             getCaption = req.query.essayCaption;
         if (!req.session.user) {
-            req.flash('error', '未登入');
+            req.flash('error', '╮(╯﹏╰)╭，还没有登录—');
             return res.redirect('/login');
         };
         mongoose.model('EssayPost').remove({_id: getId}, function (delEerr, delEssayById) {
@@ -24,6 +24,7 @@ module.exports = function(router) {
                     req.flash('error', delCerr);
                     return res.redirect('/' + req.session.user.name+'/Essay/essaylist');
                 }
+                delete req.session.essay;
                 return res.redirect('/' + req.session.user.name+'/Essay/essaylist');
             });
         });

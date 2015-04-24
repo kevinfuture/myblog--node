@@ -49,7 +49,7 @@ router.post('/Essay/newessay', function(req, res, next) {
                                         req.flash('error', err);
                                         return res.redirect('/Essay/newessay');
                                     }
-                                    req.flash('success', '创建新随笔成功！！！');
+                                    req.flash('success', 'O(∩_∩)O哈，创建新日志成功！！！');
                                     //return res.render('Blog/index', {
                                     //    user: user,
                                     //    essaycount: essaycount == 0 ? 0 : essaycount,//文章数目

@@ -11,7 +11,7 @@ module.exports = function(router) {
             essayUsername = req.query.essayUsername,
             essayCaption = req.query.essayCaption;
         if (!req.session.user) {
-            req.flash('error', '未登入');
+            req.flash('error', '╮(╯﹏╰)╭，还没有登录—');
             return res.redirect('/login');
         }
         mongoose.model('Comment').remove({_id: commentid}, function (delComerr, delCommentById) {

@@ -42,7 +42,7 @@ router.get('/Essay/comment/:_id?', function(req, res, next) {
 
 router.post('/Essay/comment/:_id?', function(req, res, next) {
     if(!req.session.user)
-    { req.flash('error', '请登录后评论！！！');
+    { req.flash('error', '╮(╯﹏╰)╭，还没有登录—然后评论');
         return res.redirect('/login');
     }
     mongoose.model('EssayPost').findOne({username:req.session.essay.username,caption:req.session.essay.caption},function(err,thisessaycommentcount) {
@@ -66,7 +66,7 @@ router.post('/Essay/comment/:_id?', function(req, res, next) {
                         req.flash('error', err);
                         return res.redirect('/Essay/showessay/'+req.session.essay._id);
                     }
-                    req.flash('success', '评论成功！！！');
+                    req.flash('success', 'O(∩_∩)O哈哈~评论成功！！！');
                     mongoose.model('Comment').find({
                         username: req.session.essay.username,
                         caption: req.session.essay.caption

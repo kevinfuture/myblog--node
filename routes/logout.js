@@ -14,7 +14,7 @@ var isLogin = new islogin();
 router.get('/logout', isLogin.checkLogin);
 router.get('/logout', function(req, res) {
     req.session.user = null;
-    req.flash('success', '登出成功');
+    req.flash('success', '( ^_^ )/~~拜拜');
     res.redirect('/');
 });
 

@@ -8,7 +8,7 @@ var router = express.Router();
 function islogin() {
     this.checkLogin=function(req, res, next) {
         if (!req.session.user) {
-            req.flash('error', '未登入');
+            req.flash('error', '╮(╯﹏╰)╭，还没有登录—');
             return res.redirect('/login');
         }
         next();
@@ -16,7 +16,7 @@ function islogin() {
 
     this.checkNotLogin=function(req, res, next) {
         if (req.session.user) {
-            req.flash('error', '已登入');
+            req.flash('error', '( ⊙ o ⊙ )，已经登录了啊！');
             return res.redirect('/');
         }
         next();//进入下一层，验证信息

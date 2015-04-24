@@ -18,7 +18,7 @@ router.get('/reg', function(req, res, next) {
 router.post('/reg', isLogin.checkNotLogin);
 router.post('/reg', function(req, res, next) {
     if (req.body['password-repeat'] != req.body['password']) {
-        req.flash('error', '两次输入的口令不一致');
+        req.flash('error', '╮(╯▽╰)╭，两次输入的口令不一致啊！！！');
         return res.redirect('/reg');
     }
     var md5 = crypto.createHash('md5');
@@ -45,7 +45,7 @@ router.post('/reg', function(req, res, next) {
                 return res.redirect('/reg');
             }
             req.session.user = newUser;
-            req.flash('success', '注册成功');
+            req.flash('success', 'O(∩_∩)O哈哈~，注册成功了！');
             res.redirect('/');
         });
     });

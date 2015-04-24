@@ -13,7 +13,7 @@ router.get('/modifysecret', function(req, res, next) {
 
 router.post('/modifysecret', function(req, res, next) {
     if (req.body['password-repeat'] != req.body['password']) {
-        req.flash('error', '两次输入的口令不一致');
+        req.flash('error', '╮(╯▽╰)╭，两次输入的口令不一致啊！！！');
         return res.redirect('/reg');
     }
     var md5 = crypto.createHash('md5');

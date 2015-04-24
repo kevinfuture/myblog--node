@@ -19,12 +19,12 @@ router.post('/confirmsecret', function(req, res) {
     var password = md5.update(req.body.password).digest('base64');
     mongoose.model('User').count({name:req.session.user.name}, function(err, user) {
         if (!user) {
-            req.flash('error', '用户不存在');
+            req.flash('error', '( ⊙ o ⊙ )，用户不存在啊！');
             return res.redirect('/login');
         }
         mongoose.model('User').findOne({name:req.session.user.name},function(err,user){
             if (user.password != password) {
-                req.flash('error', '用户口令错误');
+                req.flash('error', '╮(╯▽╰)╭，用户口令错误');
                 return res.redirect('/confirmsecret');
             }
             req.session.user = user;

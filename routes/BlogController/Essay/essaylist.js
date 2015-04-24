@@ -7,7 +7,7 @@ var EssayPost = require('../../../models/EssayPost');
 /* GET home page. */
 router.get('/:user?/Essay/essaylist', function(req, res, next) {
     if (!req.session.user) {
-        req.flash('error', '请登录以管理随笔！！');
+        req.flash('error', '┗|｀O′|┛ 嗷~~一定要先登录再管理随笔哈！！');
         return res.redirect('/login');
     }
     mongoose.model('EssayPost').count({username:req.session.user.name}, function(err, essaypost) {

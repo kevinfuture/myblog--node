@@ -7,7 +7,7 @@ var Follow = require('../../../models/Follow');
 module.exports = function(router) {
     router.get('/Follow', function (req, res) {
         if (!req.session.user) {
-            req.flash('error', '未登入');
+            req.flash('error', '╮(╯﹏╰)╭，还没有登录—');
             return res.redirect('/login');
         }
         var followwhoname = req.query.followwhoname,
@@ -24,9 +24,9 @@ module.exports = function(router) {
         newfuns.save(function (err) {
             if (err) {
                 req.flash('error', err);
-                return res.redirect('/'+currentUser.name);
+                return res.redirect('/'+followwhoname);
             }
         });
-        return res.redirect('/'+currentUser.name);
+        return res.redirect('/'+followwhoname);
     });
 }

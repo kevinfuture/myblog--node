@@ -31,11 +31,11 @@ router.post('/login', function(req, res) {
         }
         mongoose.model('User').findOne({name:req.body.username},function(err,user){
             if (user.password != password) {
-                req.flash('error', '用户口令错误');
+                req.flash('error', '╮(╯▽╰)╭，口令错误了~~~');
                 return res.redirect('/login');
             }
             req.session.user = user;
-            req.flash('success', '登入成功');
+            req.flash('success', 'OK，登陆成功了');
             res.redirect('/');
         });
     });

@@ -25,7 +25,7 @@ router.get('/users', function(req, res) {
                             req.session.follow3 = follow3;
                             req.session.newUserList = newUserList;
                             if (!currentUser) {
-                                req.flash('error', '请登录！！！');
+                                req.flash('error', '╮(╯▽╰)╭，还没有登录呢！！！');
                                 return res.redirect('/login');
                             }
                             res.render('users', {
