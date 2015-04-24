@@ -35,7 +35,7 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
                     essay: essay,
                     comment: commentlist,
                     funscount:req.session.funscount==null?0:req.session.funscount,
-                    followcount:req.session.followcount==null?0:req.session.funscount,
+                    followcount:req.session.followcount==null?0:req.session.followcount,
                     newUserList:req.session.newUserList==null?null:req.session.newUserList
                 });
             });
@@ -67,7 +67,7 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
                             essay: essay,
                             comment: commentlist,
                             funscount:req.session.funscount==null?0:req.session.funscount,
-                            followcount:req.session.followcount==null?0:req.session.funscount,
+                            followcount:req.session.followcount==null?0:req.session.followcount,
                             newUserList:req.session.newUserList==null?null:req.session.newUserList
                         });
                     });
