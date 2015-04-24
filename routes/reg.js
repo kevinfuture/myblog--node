@@ -17,6 +17,14 @@ router.get('/reg', function(req, res, next) {
 
 router.post('/reg', isLogin.checkNotLogin);
 router.post('/reg', function(req, res, next) {
+    if (req.body['username'].match( /[a-zA-Z]{4,10}/)==null) {
+        req.flash('error', '╮(╯▽╰)╭，用户名是4-10位的字母组成┗|｀O′|┛ 嗷~~');
+        return res.redirect('/reg');
+    }
+    if (req.body['password'].match( /[a-zA-Z]{1,3}[0-9]{1,8}/)==null) {
+        req.flash('error', '╮(╯▽╰)╭，密码是1-3位的字母跟1-8位数字组成的不然不安全哈');
+        return res.redirect('/reg');
+    }
     if (req.body['password-repeat'] != req.body['password']) {
         req.flash('error', '╮(╯▽╰)╭，两次输入的口令不一致啊！！！');
         return res.redirect('/reg');

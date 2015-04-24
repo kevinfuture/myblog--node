@@ -49,6 +49,18 @@ router.get('/users', function(req, res) {
     });
 });
 router.post('/users', function(req, res) {
+    if (req.body['tel'].match( /(\d)(\d)/)==null) {
+        req.flash('error', 'O(∩_∩)O哈哈~，不要开玩笑了，你的年龄肯定不是这样的');
+        return res.redirect('/users');
+    }
+    //if (req.body['tel'].match( /1[358]\\d{9}/)==null) {
+    //    req.flash('error', '╮(╯▽╰)╭，你似乎输错手机号码了！');
+    //    return res.redirect('/users');
+    //}
+    //if (req.body['email'].match( /[a-zA-Z0-9_]+@[a-zA-Z0-9]+(\\.[a-zA-Z]+)+/)==null) {
+    //    req.flash('error', '邮箱格式不对( ⊙ o ⊙ )啊！！');
+    //    return res.redirect('/users');
+    //}
     mongoose.model('User').findOneAndUpdate({name:req.session.user.name},{name:req.body.username,age:req.body.age,tel:req.body.tel,email:req.body.email}, function(err, user) {
         if (err) {
             req.flash('error', err);
