@@ -49,6 +49,8 @@ var photo= require('./routes/BlogController/Album/photo');
 var uploadfile= require('./routes/BlogController/File/uploadfile');
 //关注的路由
 var follow = require('./routes/BlogController/Follow/follow');
+//取消关注的路由
+var Delfollow = require('./routes/BlogController/Follow/Delfollow');
 //随笔的删除
 var essayDel = require('./routes/BlogController/Essay/essayDel');
 //评论的删除
@@ -109,6 +111,7 @@ app.use(function(req, res, next){
 
 //这里是关注的路由*****************************非常重要
 follow(app);
+Delfollow(app);
 //必须放在routes前边，原因是用了app
 essayDel(app);//只是点击后进行操作，不跳转
 commentDel(app);//只是点击后进行操作，不跳转

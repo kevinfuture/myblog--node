@@ -32,7 +32,17 @@
         </div>
     </div>
     <div class="wrapper">
-        <div class="blog-status r"> 随笔- <%=essaycount%>  总评论- <%=commmentcount%> <h4><a href="/Follow/?followwhoname=<%=user.name%>"> +加关注</a></h4></div>
+        <div class="blog-status r"> 随笔- <%=essaycount%>  总评论- <%=commmentcount%>
+            <h4>
+                <%=Isfollow%>
+                <%if(currentUser.name==user.name){%>
+                <%} else if(Isfollow){%>
+                    <a href="/DelFollow/?followwhoname=<%=user.name%>"> -取消关注</a>
+                <%} else {%>
+                    <a href="/Follow/?followwhoname=<%=user.name%>"> +加关注</a>
+                <%}%>
+            </h4>
+        </div>
             <div class="clearfix">
                 <div class="l main-banner">
                     <div class="banner-item">
