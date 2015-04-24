@@ -40,6 +40,8 @@ router.get('/:users?', function(req, res, next) {
                                         });
                                         req.session.calenderdate = calenderdate;
                                         req.session.currentUserName = name;
+                                        req.session.followcount = followcount;
+                                        req.session.funscount = funscount;
                                         res.render('Blog/index', {
                                             user: user,
                                             currentUser: currentUser,
