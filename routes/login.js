@@ -26,7 +26,7 @@ router.post('/login', function(req, res) {
     var password = md5.update(req.body.password).digest('base64');
     mongoose.model('User').count({name:req.body.username}, function(err, user) {
         if (!user) {
-            req.flash('error', '用户不存在');
+            req.flash('error', '╮(╯﹏╰)╭，用户不存在');
             return res.redirect('/login');
         }
         mongoose.model('User').findOne({name:req.body.username},function(err,user){

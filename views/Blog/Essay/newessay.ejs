@@ -18,7 +18,10 @@
 </head>
 <body>
 <div id="new-arctical">
-    <form class="form-horizontal" action="/Essay/newessay" method="post"> 
+    <div class="newessayCSS">
+        <% include ../../verification.ejs %>
+    </div>
+    <form class="form-horizontal" action="/Essay/newessay" method="post">
         <FIELDSET>
             <LEGEND>随笔</LEGEND>
             <p class="W_swficon ficon_swtxt"><img src="/images/shareword.png"></p>

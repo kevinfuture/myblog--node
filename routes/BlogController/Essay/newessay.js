@@ -7,10 +7,15 @@ var EssayPost = require('../../../models/EssayPost');
 
 /* GET home page. */
 router.get('/Essay/newessay', function(req, res, next) {
+    var getUrl = req.url;
         if (!req.session.user) {
-            req.flash('error', '请登录！！！');
+            req.flash('error', '╮(╯﹏╰)╭，还没有登录！！！');
             return res.redirect('/login');
         }
+    console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^ '+getUrl);
+    if (getUrl=='/Essay/newessay'||getUrl=='/Essay/newessay/') {
+        return res.redirect('/Essay/newessay/?newESSAY=NEW');
+    }
     mongoose.model('EssayPost').findOne({_id:req.query._id},function(err,essay){
         res.render('Blog/Essay/newessay', {
             essay:essay,
@@ -64,7 +69,7 @@ router.post('/Essay/newessay', function(req, res, next) {
                                 if(req.body.newESSAY){
                                     if(essay.caption==req.body.caption){
                                         req.flash('error', '╮(╯﹏╰)╭，已经存在改标题了~');
-                                        return res.redirect('/Essay/newessay');
+                                        return res.redirect('/Essay/newessay/?newESSAY=NEW');
                                     }
                                 }
                                 mongoose.model('EssayPost').findOneAndUpdate({
