@@ -15,15 +15,29 @@ module.exports = function(router) {
             return res.redirect('/login');
         }
         mongoose.model('Comment').remove({_id: commentid}, function (delComerr, delCommentById) {
-            console.log('##########'+essayUsername);
-            console.log('**************'+essayCaption);
-            mongoose.model('EssayPost').findOne({username: essayUsername,caption:essayCaption}, function (essayErr, findIdByUserCaption) {
-                console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'+findIdByUserCaption);
-                if (delComerr) {
-                    req.flash('error', delComerr);
-                    return res.redirect('/Essay/showessay/' + findIdByUserCaption._id);
-                }
-                return res.redirect('/Essay/showessay/' + findIdByUserCaption._id);
+            mongoose.model('EssayPost').findOne({username:req.session.essay.username,caption:req.session.essay.caption},function(err,thisessaycommentcount) {
+                mongoose.model('EssayPost').findOneAndUpdate({
+                    username: req.session.essay.username,
+                    caption: req.session.essay.caption
+                }, {commentcount: --(thisessaycommentcount.commentcount)}, function (commentcounterr, essayObject) {
+                    if (commentcounterr) {
+                        req.flash('error', commentcounterr);
+                        return res.redirect('/Essay/showessay/' + req.session.essay._id);
+                    }
+                    console.log('##########' + essayUsername);
+                    console.log('**************' + essayCaption);
+                    mongoose.model('EssayPost').findOne({
+                        username: essayUsername,
+                        caption: essayCaption
+                    }, function (essayErr, findIdByUserCaption) {
+                        console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&' + findIdByUserCaption);
+                        if (delComerr) {
+                            req.flash('error', delComerr);
+                            return res.redirect('/Essay/showessay/' + findIdByUserCaption._id);
+                        }
+                        return res.redirect('/Essay/showessay/' + findIdByUserCaption._id);
+                    });
+                });
             });
         });
     });
