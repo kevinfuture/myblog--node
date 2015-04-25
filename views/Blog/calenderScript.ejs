@@ -105,7 +105,7 @@
             var mon =  oTit.eq(1).html();
             for(var i=0;i<aCalDate.length;i++){
                 var date =  aCalDate.eq(i).html();
-                aCalDate.eq(i).attr('href','/'+<%=user.name%>+'/?calenderdate='+mon+'/'+date+'/'+year);
+                aCalDate.eq(i).attr('href','/'+window.location.toString().split('/')[3]+'/?calenderdate='+mon+'/'+date+'/'+year);
                 //aCalDate.eq(i).attr('href','/'+=user.name+'/?'+mon+'/'+date+'/'+year);这里必须对href后边的第一个‘/’加上，因为不加的话，会把后边的
                 //第一个参数作为了host也就是localhost：3000
             }
