@@ -24,7 +24,7 @@
             <p class="title"><%= essay.caption %></p>
             <input type="hidden" id="essaycontent" name="essaycontent" value="<%=essay.content%>"/>
             <span></span>
-            <p id="showessay"></p>
+            <p id="showessay" style="word-wrap: break-word;line-height:28px;"></p>
             <div class="newBlog-bom-opration clearfix">
                 <!-- Baidu Button BEGIN -->
                 <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
@@ -45,7 +45,7 @@
             <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
             <div class="item comment-data">
                 <h2>日期：<%=array[index].baseObj[0].Date%>来自用户：<%=array[index].commentUser%></h2>
-                <p class="">评论: <%=array[index].commentContent%></p>
+                <p class="" style="word-wrap: break-word;">评论: <%=array[index].commentContent%></p>
                 <%if(array[index].commentUser==user.name){%>
                 <div class="clearfix">
                     <p class="con-msg r"><a class="text-info" href="/Essay/comment/<%=array[index]._id%>">修改</a><a class="text-error" href="/commentDel/?commentid=<%=array[index]._id%>&&essayUsername=<%=essay.username%>&&essayCaption=<%=essay.caption%>">删除</a></p>

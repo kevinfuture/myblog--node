@@ -260,6 +260,8 @@ a{text-decoration:none;color:#333;}
 .showessay  .form-actions button{width:84px;height:30px;background: #ffc09f;  color: #fff; border: 1px solid #fbbd9e;box-shadow: none;border-radius:2px;font-family:'microsoft yahei';}
 .showessay .left-main{min-height: 660px;padding:0;}
 .showessay .info-content img{width:50px;height:50px;}
+.newessayCSS .alertn{padding-left: 80px;
+    color: red;}
 /*.showessay hr{margin:16px 0;}*/
 .showessay .info-content{padding:10px 0;}
 .showessay .info-content .cmt-con{margin-left:18px;width:490px;}
