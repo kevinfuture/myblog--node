@@ -29,12 +29,12 @@ router.post('/reg', function(req, res, next) {
         req.flash('error', '╮(╯▽╰)╭，两次输入的口令不一致啊！！！');
         return res.redirect('/reg');
     }
-    var md5 = crypto.createHash('md5');
-    var password = md5.update(req.body.password).digest('base64');
-    var newUser = new UserSchema.User({
-        name: req.body.username,
-        password: password
-    });
+        var md5 = crypto.createHash('md5');
+        var password = md5.update(req.body.password).digest('base64');
+        var newUser = new UserSchema.User({
+            name: req.body.username,
+            password: password
+        });
     //检查用户名是否已经存在
     mongoose.model('User').count({name:newUser.name}, function(err, user) {
         if (user!=0){

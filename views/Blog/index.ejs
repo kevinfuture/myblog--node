@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="blog-status r"> 随笔- <%=essaycount%>  总评论- <%=commmentcount%>
             <h4>
-                <%if(currentUser.name==user.name){%>
+                <%if(currentUser==null||currentUser.name==user.name){%>
                 <%} else if(Isfollow){%>
                     <a href="/DelFollow/?followwhoname=<%=user.name%>"> -取消关注</a>
                 <%} else {%>

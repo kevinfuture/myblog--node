@@ -21,7 +21,7 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
                     array[index].baseObj[0].Date = moment(array[index].baseObj[0].Date).format();
                 });
                 //if (!req.session.user || req.session.user.name != username)//如果只要求有用户进行登录时候浏览的话才增加“阅读”次数，那么就把||前边的条件去掉
-                if (req.session.user.name != username){
+                if (req.session.user==null||req.session.user.name != username){
                     mongoose.model('EssayPost').findOneAndUpdate({_id: req.params._id}, {browsercount: ++(essay.browsercount)}, function (err, essay) {
                         if (err) {
                             req.flash('error', err);
@@ -33,6 +33,7 @@ router.get('/Essay/showessay/:_id?', function(req, res, next) {
                 res.render('Blog/Essay/showessay', {
                     currentcomment: null,
                     essay: essay,
+                    username:username,
                     comment: commentlist,
                     funscount:req.session.funscount==null?0:req.session.funscount,
                     followcount:req.session.followcount==null?0:req.session.followcount,

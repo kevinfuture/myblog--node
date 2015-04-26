@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= essay.username %></title>
+    <title><%= essay.username==null?username:essay.username %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.js"> </script>
@@ -46,9 +46,11 @@
             <div class="item comment-data">
                 <h2>日期：<%=array[index].baseObj[0].Date%>来自用户：<%=array[index].commentUser%></h2>
                 <p class="">评论: <%=array[index].commentContent%></p>
-                <%if(array[index].commentUser==user.name){%>
                 <div class="clearfix">
+                <%if(array[index].commentUser==user.name){%>
                     <p class="con-msg r"><a class="text-info" href="/Essay/comment/<%=array[index]._id%>">修改</a><a class="text-error" href="/commentDel/?commentid=<%=array[index]._id%>&&essayUsername=<%=essay.username%>&&essayCaption=<%=essay.caption%>">删除</a></p>
+                    <%} else{%>
+                    <p class="con-msg r"><a class="text-info" href="javascripte:void(0)%>"></a><a class="text-error" href="javascript:void(0)"></a></p>
                     <%}%>
                 </div>
             </div>
@@ -56,7 +58,7 @@
             <% }%>
             <form class="form-horizontal" method="post" action="/Essay/comment/">
                 <fieldset>
-                    <legend><%=user.name%></legend>
+                    <legend><%=user==null?username:user.name%></legend>
                     <div class="control-group">
                         <input type="hidden" name="currentcommentId" value="<%=currentcomment==null?'':currentcomment._id%>"/>
                         <label class="control-label comment1" for="commentContent">评论</label>
