@@ -20,17 +20,17 @@
 <div  class="showessay clearfix">
     <div class="left-main l">
         <div class="left-essay-wrapper">
-            <h1><%= essay.username %>的博客</h1>
+            <h1><%= essay.username %>的博�/h1>
             <p class="title"><%= essay.caption %></p>
             <input type="hidden" id="essaycontent" name="essaycontent" value="<%=essay.content%>"/>
             <span></span>
-            <p id="showessay"></p>
+            <p id="showessay" style="word-wrap: break-word;line-height:28px;"></p>
             <div class="newBlog-bom-opration clearfix">
                 <!-- Baidu Button BEGIN -->
                 <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
                     <span class="bds_more" style="padding-top:4px;float:left">分享到：</span>
-                    <a class="bds_isohu" style="margin-left:0px;" title="分享到我的搜狐" href="#"></a>
-                    <a class="bds_tsina" style="margin-left:0px;" title="分享到新浪微博" href="#"></a>
+                    <a class="bds_isohu" style="margin-left:0px;" title="分享到我的搜� href="#"></a>
+                    <a class="bds_tsina" style="margin-left:0px;" title="分享到新浪微� href="#"></a>
                     <a class="bds_qzone" style="margin-left:0px;" title="分享到QQ空间" href="#"></a>
                 </div>
                 <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=396125"></script>
@@ -44,8 +44,8 @@
             <%comment.forEach(function(value,index,array){%>
             <input type="hidden"id="caption" name="caption" value="<%=array[index].caption%>">
             <div class="item comment-data">
-                <h2>日期：<%=array[index].baseObj[0].Date%>来自用户：<%=array[index].commentUser%></h2>
-                <p class="">评论: <%=array[index].commentContent%></p>
+                <h2>日期�%=array[index].baseObj[0].Date%>来自用户�%=array[index].commentUser%></h2>
+                <p class="" style="word-wrap: break-word;">评论: <%=array[index].commentContent%></p>
                 <div class="clearfix">
                 <%if(user!=null&&array[index].commentUser==user.name){%>
                     <p class="con-msg r"><a class="text-info" href="/Essay/comment/<%=array[index]._id%>">修改</a><a class="text-error" href="/commentDel/?commentid=<%=array[index]._id%>&&essayUsername=<%=essay.username%>&&essayCaption=<%=essay.caption%>">删除</a></p>
