@@ -49,6 +49,8 @@ router.get('/users', function(req, res) {
     });
 });
 router.post('/users', function(req, res) {
+    console.log('!!!!!!!!!!!!!!!!!'+req.body['age']);
+    console.log('!!!!!!!!!!!!!!!!!'+req.body['age'].match( /(\d)(\d)/));
     if (req.body['age'].match( /(\d)(\d)/)==null) {
         req.flash('error', 'O(∩_∩)O哈哈~，不要开玩笑了，你的年龄肯定不是这样的');
         return res.redirect('/users');

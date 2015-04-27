@@ -11,6 +11,10 @@ var util=require('util');
 router.get('/Essay/showessay/:_id?', function(req, res, next) {
     var usernameAndcaption = req.url.substring(17,30).split('/');//获取地址栏信息并截取有用信息
     var username = usernameAndcaption[0];
+    if(!req.session.user)
+    { req.flash('error', '╮(╯﹏╰)╭，登录后查看！！！');
+        return res.redirect('/login');
+    }
     mongoose.model('EssayPost').findOne({_id:req.params._id},function(err,essay) {
         if(essay) {
             mongoose.model('Comment').find({
